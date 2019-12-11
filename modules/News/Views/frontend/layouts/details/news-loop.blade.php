@@ -1,10 +1,10 @@
 @foreach($rows as $row)
     @php
         $translation = $row->translateOrOrigin(app()->getLocale()); @endphp
-    <div class="post_item ">
+    <div class="post_item">
         <div class="header">
             @if($image_tag = get_image_tag($row->image_id,'full'))
-                <header class="post-header">
+                <header class="post-header fl">
                     <a href="{{$row->getDetailUrl()}}">
                         {!! $image_tag !!}
                     </a>
@@ -23,7 +23,7 @@
                     @endif
                 </div>
             @endif
-            <div class="post-inner">
+            <div class="post-inner fr">
                 <h4 class="post-title">
                     <a class="text-darken" href="{{$row->getDetailUrl()}}"> {{$translation->title}}</a>
                 </h4>

@@ -17,9 +17,7 @@
         @if(!empty($title_page))
             <div class="bravo_banner" @if($bg = setting_item("news_page_list_banner")) style="background-image: url({{get_file_url($bg,'full')}})" @endif >
                 <div class="container">
-                    <h1>
-                        {{ $title_page }}
-                    </h1>
+                    
                 </div>
             </div>
         @endif
@@ -31,12 +29,12 @@
                         @if($rows->count() > 0)
                             <div class="list-news">
                                 @include('News::frontend.layouts.details.news-loop')
+                            </div>
                                 <hr>
                                 <div class="bravo-pagination">
                                     {{$rows->appends(request()->query())->links()}}
                                     <span class="count-string">{{ __("Showing :from - :to of :total posts",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                                 </div>
-                            </div>
                         @else
                             <div class="alert alert-danger">
                                 {{__("Sorry, but nothing matched your search terms. Please try again with some different keywords.")}}
