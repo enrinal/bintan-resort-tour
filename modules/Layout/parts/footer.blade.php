@@ -2,9 +2,9 @@
     <div class="mailchimp">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                <div class="col-xs-12 col-lg-11 col-lg-offset-1">
                     <div class="row">
-                        <div class="col-xs-12  col-md-7 col-lg-6">
+                   {{--     <div class="col-xs-12  col-md-7 col-lg-6">
                             <div class="media ">
                                 <div class="media-left hidden-xs">
                                     <i class="icofont-island-alt"></i>
@@ -14,17 +14,17 @@
                                     <p>{{__("Thoughtful thoughts to your inbox")}}</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xs-12 col-md-5 col-lg-6">
+                        </div> --}}
+                        <div class="col-xs-12 col-md-12 col-lg-12">
                             <form action="{{route('newsletter.subscribe')}}" class="subcribe-form bravo-subscribe-form bravo-form">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" name="email" class="form-control email-input" placeholder="{{__('Your Email')}}">
+                                    <input type="text" name="email" class="form-control email-input" placeholder="{{__('Email Address')}}">
                                     <button type="submit" class="btn-submit">{{__('Subscribe')}}
                                         <i class="fa fa-spinner fa-pulse fa-fw"></i>
                                     </button>
                                 </div>
-                                <div class="form-mess"></div>
+                                <div class="form-mess"><i class="icofont-island-alt"></i> {{__("Get news, updates and tour packages via email.")}}</div>
                             </form>
 
                         </div>
@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-    <div class="main-footer">
+    <div class="main-footer text-center">
         <div class="container">
             <div class="row">
                 @if($list_widget_footers = setting_item_with_lang("list_widget_footer"))

@@ -48,6 +48,20 @@ $style_typo = json_decode(setting_item_with_lang('style_typo',false,"{}"),true);
         background: {{$main_color}};
     }
 
+    .bravo_wrap .bravo_footer .mailchimp .subcribe-form .form-control, 
+    .bravo_wrap .bravo_footer .mailchimp .subcribe-form .form-control::placeholder
+    {
+        border-bottom: 2px solid {{$main_color}};
+        color: {{$main_color}};
+
+    }
+
+    .bravo_wrap .bravo_footer .mailchimp .subcribe-form .form-mess
+    {
+        color: {{$main_color}};
+
+    }
+
     .bravo-pagination ul li.active a, .bravo-pagination ul li.active span
     {
         border-color:{{$main_color}}!important;
@@ -300,4 +314,33 @@ $style_typo = json_decode(setting_item_with_lang('style_typo',false,"{}"),true);
 
     {!! clean(setting_item('style_custom_css')) !!}
     {!! clean(setting_item_with_lang('style_custom_css')) !!}
+
+    .panel-heading {
+      position: relative;
+  }
+  .panel-heading[data-toggle="collapse"]:after {
+      font-family: 'FontAwesome';
+      content: "\f078";  /* "play" icon */
+      position: absolute;
+      color: {{$main_color}};
+      font-size: 18px;
+      line-height: 22px;
+      right: 20px;
+      top: calc(50% - 10px);
+
+      /* rotate "play" icon from > (right arrow) to down arrow */
+      -webkit-transform: rotate(180deg);
+      -moz-transform:    rotate(180deg);
+      -ms-transform:     rotate(180deg);
+      -o-transform:      rotate(180deg);
+      transform:         rotate(180deg);
+  }
+  .panel-heading[data-toggle="collapse"].collapsed:after {
+      /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+      -webkit-transform: rotate(-1deg);
+      -moz-transform:    rotate(-1deg);
+      -ms-transform:     rotate(-1deg);
+      -o-transform:      rotate(-1deg);
+      transform:         rotate(-1deg);
+  }
 </style>
