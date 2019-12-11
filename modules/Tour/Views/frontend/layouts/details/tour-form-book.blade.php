@@ -9,7 +9,7 @@
             <div class="form-head">
                 <div class="price">
                     <span class="label">
-                        {{__("from")}}
+                        {{__("")}}
                     </span>
                     <span class="value">
                         <span class="onsale">{{ $row->display_sale_price }}</span>

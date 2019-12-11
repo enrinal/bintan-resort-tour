@@ -141,15 +141,25 @@
         </div>
     </div>
 @endif
+<div class="panel-group" id="accordion">
 @include('Tour::frontend.layouts.details.tour-include-exclude')
 @if($translation->short_desc)
-    <div class="g-overview">
-        <h3>{{__("Term and Condition")}}</h3>
-        <div class="description">
+    <div class="panel-group" id="accordion">
+        <div class="g-overview panel panel-default">
+          <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo">
+            <h3>{{__("Term and Condition")}}</h3>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="description">
             <?php echo $translation->short_desc ?>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 @endif
+</div>
 @include('Tour::frontend.layouts.details.tour-itinerary')
 @include('Tour::frontend.layouts.details.tour-attributes')
 {{-- @include('Tour::frontend.layouts.details.tour-faqs') --}}
