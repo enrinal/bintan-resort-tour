@@ -11,8 +11,8 @@ class SettingClass extends BaseSettingsClass
     {
         return [
             [
-                'id'   => 'car',
-                'title' => __("Car Settings"),
+                'id'   => 'merchandise',
+                'title' => __("Merchandise Settings"),
                 'position'=>20,
                 'view'=>"Car::admin.settings.car",
                 "keys"=>[

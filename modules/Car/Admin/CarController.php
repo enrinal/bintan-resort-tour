@@ -64,7 +64,7 @@ class CarController extends AdminController
             'car_manage_others' => $this->hasPermission('car_manage_others'),
             'breadcrumbs'        => [
                 [
-                    'name' => __('Cars'),
+                    'name' => __('Merchandise'),
                     'url'  => 'admin/module/tour'
                 ],
                 [
@@ -72,7 +72,7 @@ class CarController extends AdminController
                     'class' => 'active'
                 ],
             ],
-            'page_title'=>__("Car Management")
+            'page_title'=>__("Merchandise Management")
         ];
         return view('Car::admin.index', $data);
     }
@@ -91,15 +91,15 @@ class CarController extends AdminController
             'translation'    => new $this->car_translation(),
             'breadcrumbs'    => [
                 [
-                    'name' => __('Cars'),
+                    'name' => __('Merchandises'),
                     'url'  => 'admin/module/car'
                 ],
                 [
-                    'name'  => __('Add Car'),
+                    'name'  => __('Add Merchandise'),
                     'class' => 'active'
                 ],
             ],
-            'page_title'     => __("Add new Car")
+            'page_title'     => __("Add new Merchandise")
         ];
         return view('Car::admin.detail', $data);
     }
@@ -126,11 +126,11 @@ class CarController extends AdminController
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
-                    'name' => __('Cars'),
+                    'name' => __('Merchandises'),
                     'url'  => 'admin/module/car'
                 ],
                 [
-                    'name'  => __('Edit Car'),
+                    'name'  => __('Edit Merchandise'),
                     'class' => 'active'
                 ],
             ],
@@ -200,7 +200,7 @@ class CarController extends AdminController
             }
 
             if($id > 0 ){
-                return back()->with('success',  __('Car updated') );
+                return back()->with('success',  __('Merchandise updated') );
             }else{
                 return redirect(route('car.admin.edit',$row->id))->with('success', __('Car created') );
             }

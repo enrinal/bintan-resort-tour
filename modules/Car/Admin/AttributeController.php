@@ -46,7 +46,7 @@ class AttributeController extends AdminController
             'translation'    => new AttributesTranslation(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Car'),
+                    'name' => __('Merchandise'),
                     'url'  => 'admin/module/car'
                 ],
                 [

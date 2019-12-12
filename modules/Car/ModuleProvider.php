@@ -27,32 +27,26 @@ class ModuleProvider extends ModuleServiceProvider
         return [
             'car'=>[
                 "position"=>45,
-                'url'        => 'admin/module/car',
-                'title'      => __('Car'),
-                'icon'       => 'ion-logo-model-s',
+                'url'        => 'admin/module/merchandise',
+                'title'      => __('Merchandise'),
+                'icon'       => 'fa fa-gift',
                 'permission' => 'car_view',
                 'children'   => [
                     'add'=>[
-                        'url'        => 'admin/module/car',
-                        'title'      => __('All Cars'),
+                        'url'        => 'admin/module/merchandise',
+                        'title'      => __('All Merchandise'),
                         'permission' => 'car_view',
                     ],
                     'create'=>[
-                        'url'        => 'admin/module/car/create',
-                        'title'      => __('Add new Car'),
+                        'url'        => 'admin/module/merchandise/create',
+                        'title'      => __('Add new Merchandise'),
                         'permission' => 'car_create',
                     ],
                     'attribute'=>[
-                        'url'        => 'admin/module/car/attribute',
+                        'url'        => 'admin/module/merchandise/attribute',
                         'title'      => __('Attributes'),
                         'permission' => 'car_manage_attributes',
                     ],
-                    'availability'=>[
-                        'url'        => 'admin/module/car/availability',
-                        'title'      => __('Availability'),
-                        'permission' => 'car_create',
-                    ],
-
                 ]
             ]
         ];
