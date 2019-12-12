@@ -3,7 +3,7 @@
         @if($service = $booking->service)
             <i class="{{$service->getServiceIconFeatured()}}"></i>
         @endif
-        <small>{{$booking->object_model}}</small>
+        <small>Bintan Apartement</small>
     </td>
     <td>
         @if($service = $booking->service)
