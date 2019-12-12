@@ -34,13 +34,8 @@ class ModuleProvider extends ModuleServiceProvider
                 'children'   => [
                     'add'=>[
                         'url'        => 'admin/module/space',
-                        'title'      => __('All Spaces'),
+                        'title'      => __('Bintan Apartement'),
                         'permission' => 'space_view',
-                    ],
-                    'create'=>[
-                        'url'        => 'admin/module/space/create',
-                        'title'      => __('Add new Space'),
-                        'permission' => 'space_create',
                     ],
                     'attribute'=>[
                         'url'        => 'admin/module/space/attribute',

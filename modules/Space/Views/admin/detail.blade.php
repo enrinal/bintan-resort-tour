@@ -6,7 +6,6 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between mb20">
                 <div class="">
-                    <h1 class="title-bar">{{$row->id ? __('Edit: ').$row->title : __('Add new space')}}</h1>
                     @if($row->slug)
                         <p class="item-url-demo">{{__("Permalink")}}: {{ url('space' ) }}/<a href="#" class="open-edit-input" data-name="slug">{{$row->slug}}</a>
                         </p>
@@ -50,31 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if(is_default_lang())
-                        <div class="panel">
-                            <div class="panel-title"><strong>{{__("Author Setting")}}</strong></div>
-                            <div class="panel-body">
-                                <div class="form-group">
-                                    <?php
-                                    $user = !empty($row->create_user) ? App\User::find($row->create_user) : false;
-                                    \App\Helpers\AdminForm::select2('create_user', [
-                                        'configs' => [
-                                            'ajax'        => [
-                                                'url' => url('/admin/module/user/getForSelect2'),
-                                                'dataType' => 'json'
-                                            ],
-                                            'allowClear'  => true,
-                                            'placeholder' => __('-- Select User --')
-                                        ]
-                                    ], !empty($user->id) ? [
-                                        $user->id,
-                                        $user->getDisplayName() . ' (#' . $user->id . ')'
-                                    ] : false)
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
+                       
                         @if(is_default_lang())
                             <div class="panel">
                                 <div class="panel-title"><strong>{{__("Availability")}}</strong></div>

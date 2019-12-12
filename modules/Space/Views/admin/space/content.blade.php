@@ -11,12 +11,7 @@
                 <textarea name="content" class="d-none has-ckeditor" cols="30" rows="10">{{$translation->content}}</textarea>
             </div>
         </div>
-        @if(is_default_lang())
-            <div class="form-group">
-                <label class="control-label">{{__("Youtube Video")}}</label>
-                <input type="text" name="video" class="form-control" value="{{$row->video}}" placeholder="{{__("Youtube link video")}}">
-            </div>
-        @endif
+     
         <div class="form-group-item">
             <label class="control-label">{{__('FAQs')}}</label>
             <div class="g-items-header">
