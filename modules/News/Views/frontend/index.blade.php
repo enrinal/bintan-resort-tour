@@ -21,7 +21,7 @@
                 </div>
             </div>
         @endif
-        @include('News::frontend.layouts.details.news-breadcrumb')
+   {{--     @include('News::frontend.layouts.details.news-breadcrumb') --}}
         <div class="bravo_content">
             <div class="container">
                 <div class="row">
