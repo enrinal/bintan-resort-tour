@@ -78,14 +78,23 @@
                     </li>
                 @else
                     <li>
+                        @if(!Auth::user()->hasPermissionTo('dashboard_access'))
                         <a href="{{url(app_get_locale().'/user/profile')}}">
                             <i class="icofont-user-suited"></i> {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
                         </a>
+                        @endif
+                        @if(Auth::user()->hasPermissionTo('dashboard_access'))
+                        <a href="{{url(app_get_locale().'admin')}}">
+                            <i class="icofont-user-suited"></i> {{__("Hi, :Name",['name'=>Auth::user()->getDisplayName()])}}
+                        </a>
+                        @endif
                     </li>
                     <li>
+                        @if(!Auth::user()->hasPermissionTo('dashboard_access'))
                         <a href="{{url(app_get_locale().'/user/profile')}}">
                             <i class="icon ion-md-construct"></i> {{__("My profile")}}
                         </a>
+                        @endif
                     </li>
                     @if(Auth::user()->hasPermissionTo('dashboard_access'))
                         <li>
