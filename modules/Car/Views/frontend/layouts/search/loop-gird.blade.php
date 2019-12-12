@@ -79,7 +79,7 @@
             </div>
             <div class="price">
                 <span class="onsale">{{ $row->display_sale_price }}</span>
-                <span class="text-price">{{ $row->display_price }} <span class="unit">{{__("/night")}}</span></span>
+                <span class="text-price">{{ $row->display_price }} <span class="unit">{{__("")}}</span></span>
             </div>
         </div>
     </div>
