@@ -7,9 +7,9 @@
             <div class="topbar-search">
                 <div class="text">
                     @if($rows->total() > 1)
-                        {{ __(":count cars found",['count'=>$rows->total()]) }}
+                        {{ __(":count merchandises found",['count'=>$rows->total()]) }}
                     @else
-                        {{ __(":count car found",['count'=>$rows->total()]) }}
+                        {{ __(":count merchandise found",['count'=>$rows->total()]) }}
                     @endif
                 </div>
                 <div class="control">
@@ -26,7 +26,7 @@
                         @endforeach
                     @else
                         <div class="col-lg-12">
-                            {{__("Car not found")}}
+                            {{__("Merchandise not found")}}
                         </div>
                     @endif
                 </div>
@@ -34,7 +34,7 @@
             <div class="bravo-pagination">
                 {{$rows->appends(request()->query())->links()}}
                 @if($rows->total() > 0)
-                    <span class="count-string">{{ __("Showing :from - :to of :total Cars",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
+                    <span class="count-string">{{ __("Showing :from - :to of :total Merchandises",["from"=>$rows->firstItem(),"to"=>$rows->lastItem(),"total"=>$rows->total()]) }}</span>
                 @endif
             </div>
         </div>
