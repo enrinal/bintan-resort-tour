@@ -115,6 +115,6 @@ class ListEvents extends BaseBlock
             'title'      => $model['title'] ?? "",
             'desc'      => $model['desc'] ?? "",
         ];
-        return view('Events::frontend.blocks.list-events.index', $data);
+        return view('Events::frontend.blocks.list-news.index', $data);
     }
 }

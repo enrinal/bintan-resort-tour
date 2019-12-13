@@ -171,6 +171,6 @@ class ListAttractions extends BaseBlock
             'title'      => $model['title'] ?? "",
             'desc'      => $model['desc'] ?? "",
         ];
-        return view('Attraction::frontend.blocks.list-attraction.index', $data);
+        return view('Attraction::frontend.blocks.list-tour.index', $data);
     }
 }
