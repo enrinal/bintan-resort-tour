@@ -4,18 +4,18 @@
     </div>
     <div class="col-lg-9 col-md-12">
         <div class="bravo-list-item">
-            <div class="topbar-search">
-                <div class="text">
-                    @if($rows->total() > 1)
+            {{-- <div class="topbar-search">
+              <div class="text">
+                    @if($rows->total() == 0)
                         {{ __(":count tours found",['count'=>$rows->total()]) }}
                     @else
                         {{ __(":count tour found",['count'=>$rows->total()]) }}
                     @endif
-                </div>
+                </div> 
                 <div class="control">
 
                 </div>
-            </div>
+            </div> --}}
             <div class="list-item">
                 <div class="row">
                     @if($rows->total() > 0)

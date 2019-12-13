@@ -41,8 +41,8 @@
     $reviewData = $row->getScoreReview();
     $score_total = $reviewData['score_total'];
     ?>
-    <div class="service-review tour-review-{{$score_total}}">
-      {{--  <div class="list-star">
+   {{--  <div class="service-review tour-review-{{$score_total}}">
+       <div class="list-star">
             <ul class="booking-item-rating-stars">
                 <li><i class="fa fa-star-o"></i></li>
                 <li><i class="fa fa-star-o"></i></li>
@@ -59,7 +59,7 @@
                     <li><i class="fa fa-star"></i></li>
                 </ul>
             </div>
-        </div> --}}
+        </div> 
         <span class="review">
             @if($reviewData['total_review'] > 1)
                 {{ __(":number Reviews",["number"=>$reviewData['total_review'] ]) }}
@@ -67,7 +67,7 @@
                 {{ __(":number Review",["number"=>$reviewData['total_review'] ]) }}
             @endif
         </span>
-    </div>
+    </div> --}}
     @endif
     <hr /><br />
     <div class="info">
