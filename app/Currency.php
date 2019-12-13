@@ -80,7 +80,8 @@ class Currency
 
         $exchange_rate = $main_currency ? 1 : static::getCurrent('rate',1,$main_currency);
 
-        $price /= $exchange_rate;
+        //$price /= $exchange_rate;
+        $price *= $exchange_rate;
 
         $s = number_format((float)$price, (int)$currency_no_decimal, $currency_decimal, $currency_thousand);
 
