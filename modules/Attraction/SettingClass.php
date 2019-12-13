@@ -18,7 +18,7 @@ class SettingClass extends BaseSettingsClass
                 'id'   => 'attraction',
                 'title' => __("Attraction Settings"),
                 'position'=>20,
-                'view'=>"Attraction::admin.settings.tour",
+                'view'=>"Attraction::admin.settings.attraction",
                 "keys"=>[
                     'attraction_disable',
                     'attraction_page_search_title',
