@@ -14,8 +14,8 @@
                 $title_page = $custom_title_page;
             }
         @endphp
-        @if(!empty($title_page))
-            <div class="bravo_banner" @if($bg = setting_item("news_page_list_banner")) style="background-image: url({{get_file_url($bg,'full')}})" @endif >
+        @if(empty($title_page))
+            <div class="bravo_banner" @if($bg = setting_item("events_page_list_banner")) style="background-image: url({{get_file_url($bg,'full')}})" @endif >
                 <div class="container">
                     
                 </div>
