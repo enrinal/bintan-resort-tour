@@ -11,6 +11,7 @@ class Events extends BaseModel
     protected $table = 'core_events';
     protected $fillable = [
         'title',
+        'lang',
         'content',
         'status',
         'slug',

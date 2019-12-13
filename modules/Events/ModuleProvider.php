@@ -35,29 +35,29 @@ class ModuleProvider extends ModuleServiceProvider
                 "position"=>10,
                 'url'        => 'admin/module/events',
                 'title'      => __("Events"),
-                'icon'       => 'ion-md-bookmarks',
+                'icon'       => 'fa fa-calendar',
                 'permission' => 'news_view',
                 'children'   => [
-                    'news_view'=>[
+                    'events_view'=>[
                         'url'        => 'admin/module/events',
                         'title'      => __("All Events"),
                         'permission' => 'news_view',
                     ],
-                    'news_create'=>[
+                    'events_create'=>[
                         'url'        => 'admin/module/events/create',
                         'title'      => __("Add Events"),
                         'permission' => 'news_create',
                     ],
-                    'news_categoty'=>[
-                        'url'        => 'admin/module/events/category',
-                        'title'      => __("Categories"),
-                        'permission' => 'news_create',
-                    ],
-                    'news_tag'=>[
-                        'url'        => 'admin/module/events/tag',
-                        'title'      => __("Tags"),
-                        'permission' => 'news_create',
-                    ],
+                    // 'events_categoty'=>[
+                    //     'url'        => 'admin/module/events/category',
+                    //     'title'      => __("Categories"),
+                    //     'permission' => 'news_create',
+                    // ],
+                    // 'events_tag'=>[
+                    //     'url'        => 'admin/module/events/tag',
+                    //     'title'      => __("Tags"),
+                    //     'permission' => 'news_create',
+                    // ],
                 ]
             ],
         ];

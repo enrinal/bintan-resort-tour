@@ -9,7 +9,7 @@ use Modules\News\Models\NewsCategory;
 use Modules\News\Models\NewsTranslation;
 use Modules\News\Models\Tag;
 
-class NewsController extends FrontendController
+class EventsController extends FrontendController
 {
     public function __construct()
     {

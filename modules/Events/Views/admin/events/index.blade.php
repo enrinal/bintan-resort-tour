@@ -1,18 +1,18 @@
 @extends('admin.layouts.app')
-@section('title','News')
+@section('title','Events')
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("All news")}}</h1>
+            <h1 class="title-bar">{{__("All events")}}</h1>
             <div class="title-actions">
-                <a href="{{url('admin/module/news/create')}}" class="btn btn-primary">{{__("Add new Post")}}</a>
+                <a href="{{url('admin/module/events/create')}}" class="btn btn-primary">{{__("Add new Event")}}</a>
             </div>
         </div>
         @include('admin.message')
         <div class="filter-div d-flex justify-content-between ">
             <div class="col-left">
                 @if(!empty($rows))
-                    <form method="post" action="{{url('admin/module/news/bulkEdit')}}"
+                    <form method="post" action="{{url('admin/module/events/bulkEdit')}}"
                           class="filter-form filter-form-left d-flex justify-content-start">
                         {{csrf_field()}}
                         <select name="action" class="form-control">
@@ -25,23 +25,7 @@
                     </form>
                 @endif
             </div>
-            <div class="col-left">
-                <form method="get" action="{{url('/admin/module/news/')}} " class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
-                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name')}}"
-                           class="form-control">
-                    <select name="cate_id" class="form-control">
-                        <option value="">{{ __('--All Category --')}} </option>
-                        <?php
-                        if (!empty($categories)) {
-                            foreach ($categories as $category) {
-                                printf("<option value='%s' >%s</option>", $category->id, $category->name);
-                            }
-                        }
-                        ?>
-                    </select>
-                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search News')}}</button>
-                </form>
-            </div>
+            
         </div>
         <div class="text-right">
             <p><i>{{__('Found :total items',['total'=>$rows->total()])}}</i></p>
@@ -57,9 +41,8 @@
                                 <tr>
                                     <th width="60px"><input type="checkbox" class="check-all"></th>
                                     <th class="title"> {{ __('Name')}}</th>
-                                    <th width="200px"> {{ __('Category')}}</th>
-                                    <th width="130px"> {{ __('Author')}}</th>
                                     <th width="100px"> {{ __('Date')}}</th>
+                                    <th width="100px"> {{ __('Link Event')}}</th>
                                     <th width="100px">{{  __('Status')}}</th>
                                     <th width="100px"></th>
                                 </tr>
@@ -74,18 +57,12 @@
                                             <td class="title">
                                                 <a href="{{$row->getEditUrl()}}">{{$row->title}}</a>
                                             </td>
-                                            <td>{{$row->getCategory->name ?? '' }}</td>
-                                            <td>
-                                                @if(!empty($row->getAuthor))
-                                                    {{$row->getAuthor->getDisplayName()}}
-                                                @else
-                                                    {{__("[Author Deleted]")}}
-                                                @endif
-                                            </td>
+                                            
                                             <td> {{ display_date($row->updated_at)}}</td>
+                                            <td> {{ $row->lang}}</td>
                                             <td><span class="badge badge-{{ $row->status }}">{{ $row->status }}</span></td>
                                             <td>
-                                                <a href="{{route('news.admin.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}</a>
+                                                <a href="{{route('events.admin.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}</a>
                                             </td>
                                         </tr>
                                     @endforeach

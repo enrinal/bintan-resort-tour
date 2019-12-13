@@ -9,18 +9,18 @@ class SettingClass extends BaseSettingsClass
     {
         return [
             [
-                'id'   => 'news',
+                'id'   => 'events',
                 'title' => __("Events Settings"),
                 'position'=>30,
-                'view'=>"Events::admin.settings.news",
+                'view'=>"Events::admin.settings.events",
                 "keys"=>[
-                    'news_page_list_title',
-                    'news_page_list_banner',
-                    'news_sidebar',
-                    'news_page_list_seo_title',
-                    'news_page_list_seo_desc',
-                    'news_page_list_seo_image',
-                    'news_page_list_seo_share',
+                    'events_page_list_title',
+                    'events_page_list_banner',
+                    'events_sidebar',
+                    'events_page_list_seo_title',
+                    'events_page_list_seo_desc',
+                    'events_page_list_seo_image',
+                    'events_page_list_seo_share',
                 ],
                 'html_keys'=>[
 

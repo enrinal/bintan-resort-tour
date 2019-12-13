@@ -12,7 +12,7 @@ use App\BaseModel;
 class EventsTranslation extends BaseModel
 {
     protected $table = 'core_events_translations';
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'lang'];
     protected $seo_type = 'events_translation';
     protected $cleanFields = [
         'content'
