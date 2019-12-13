@@ -9,44 +9,16 @@
                         {!! $image_tag !!}
                     </a>
                 </header>
-                <div class="cate">
-                    @php $category = $row->getCategory; @endphp
-                    @if(!empty($category))
-                        @php $t = $category->translateOrOrigin(app()->getLocale()); @endphp
-                        <ul>
-                            <li>
-                                <a href="{{$category->getDetailUrl(app()->getLocale())}}">
-                                    {{$t->name ?? ''}}
-                                </a>
-                            </li>
-                        </ul>
-                    @endif
-                </div>
+                
             @endif
             <div class="post-inner fr">
                 <h4 class="post-title">
                     <a class="text-darken" href="{{$row->getDetailUrl()}}"> {{$translation->title}}</a>
                 </h4>
-                <div class="post-info">
-                    <ul>
-                        @if(!empty($row->getAuthor))
-                            <li>
-                                @if($avatar_url = $row->getAuthor->getAvatarUrl())
-                                    <img class="avatar" src="{{$avatar_url}}" alt="{{$row->getAuthor->getDisplayName()}}">
-                                @else
-                                    <span class="avatar-text">{{ucfirst($row->getAuthor->getDisplayName()[0])}}</span>
-                                @endif
-                                <span> {{ __('BY ')}} </span>
-                                {{$row->getAuthor->getDisplayName() ?? ''}}
-                            </li>
-                        @endif
-                        <li> {{__('DATE ')}}  {{ display_date($row->updated_at)}}  </li>
-                    </ul>
-                </div>
                 <div class="post-desciption">
                     {!! get_exceprt($translation->content) !!}
                 </div>
-                <a class="btn-readmore" href="{{$row->getDetailUrl()}}">{{ __('Read More')}}</a>
+                <a class="btn-readmore" href="{{$translation->lang}}">{{ __('Link Event')}}</a>
             </div>
         </div>
     </div>
