@@ -43,6 +43,7 @@ $style_typo = json_decode(setting_item_with_lang('style_typo',false,"{}"),true);
     .bravo_wrap .bravo_footer .mailchimp .subcribe-form .btn-submit,
     .bravo-news .widget_search form button,
     .bravo_wrap .bravo_detail_tour .bravo_content .g-itinerary .list-item .item .body,
+    .bravo_wrap .page-template-content .bravo-list-news .item-news .caption .item-more a::after,
     .btn-primary:not(:disabled):not(.disabled):active
     {
         background: {{$main_color}};
