@@ -45,7 +45,7 @@ class CarTermFeaturedBox extends BaseBlock
 
     public function getName()
     {
-        return __('Car: Term Featured Box');
+        return __('Merchandise: Term Featured Box');
     }
 
     public function content($model = [])
