@@ -41,7 +41,7 @@
     $reviewData = $row->getScoreReview();
     $score_total = $reviewData['score_total'];
     ?>
-    <div class="service-review tour-review-{{$score_total}}">
+    <div class="service-review attraction-review-{{$score_total}}">
         <div class="list-star">
             <ul class="booking-item-rating-stars">
                 <li><i class="fa fa-star-o"></i></li>

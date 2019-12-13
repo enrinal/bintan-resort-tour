@@ -1,4 +1,4 @@
-<div class="bravo_single_book_wrap @if(setting_item('tour_enable_inbox')) has-vendor-box @endif">
+<div class="bravo_single_book_wrap @if(setting_item('attraction_enable_inbox')) has-vendor-box @endif">
     <div class="bravo_single_book">
         <div id="bravo_tour_book_app" v-cloak>
             @if($row->discount_percent)

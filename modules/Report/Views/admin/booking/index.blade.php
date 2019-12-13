@@ -79,12 +79,7 @@
                                 <td>
                                     @if($service = $row->service)
                                         <a href="{{$service->getDetailUrl()}}" target="_blank">{{$service->title ?? ''}}</a>
-                                        @if($row->vendor)
-                                            <br>
-                                            <span>{{__('by')}}</span>
-                                            <a href="{{url('admin/module/user/edit/'.$row->vendor_id)}}"
-                                               target="_blank">{{$row->vendor->name_or_email.' (#'.$row->vendor_id.')' }}</a>
-                                        @endif
+                                        
                                     @else
                                         {{__("[Deleted]")}}
                                     @endif

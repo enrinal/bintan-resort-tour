@@ -8,7 +8,7 @@
         @endif
     </div>
     <div class="right">
-        @if(setting_item('tour_enable_review') and $review_score)
+        @if(setting_item('attraction_enable_review') and $review_score)
             <div class="review-score">
                 <div class="head">
                     <div class="left">
@@ -48,8 +48,8 @@
                 </div>
             </div>
         @endif
-        @if(!empty($row->category_tour->name))
-            @php $cat =  $row->category_tour->translateOrOrigin(app()->getLocale()) @endphp
+        @if(!empty($row->category_attraction->name))
+            @php $cat =  $row->category_attraction->translateOrOrigin(app()->getLocale()) @endphp
             <div class="col-xs-6 col-lg-3 col-md-6">
                 <div class="item">
                     <div class="icon">

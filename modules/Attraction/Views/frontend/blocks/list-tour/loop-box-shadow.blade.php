@@ -18,7 +18,7 @@
                 {!! get_image_tag($row->image_id,'medium',['class'=>'img-responsive','alt'=>$row->title]) !!}
             @endif
         @endif
-        <a class="st-btn st-btn-primary tour-book-now" href="{{$row->getDetailUrl()}}">{{__("Book now")}}</a>
+        <a class="st-btn st-btn-primary attraction-book-now" href="{{$row->getDetailUrl()}}">{{__("Book now")}}</a>
         <div class="service-wishlist {{$row->isWishList()}}" data-id="{{$row->id}}" data-type="{{$row->type}}">
             <i class="fa fa-heart"></i>
         </div>
