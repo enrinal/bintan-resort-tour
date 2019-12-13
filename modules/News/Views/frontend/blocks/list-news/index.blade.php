@@ -1,7 +1,7 @@
 <div class="bravo-list-news">
     <div class="container-fluid" style="padding-right: 30px; padding-left: 30px">
         @if($title)
-            <div class="title">
+            <div class="title title_style" style="margin-bottom: 30px;">
                 {{$title}}
                 @if(!empty($desc))
                     <div class="sub-title">

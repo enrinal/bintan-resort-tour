@@ -1,15 +1,15 @@
 <div class="container">
     <div class="bravo-list-car layout_{{$style_list}}">
         @if($title)
-        <div class="title">
+        <div class="title title_style" style="margin-bottom: 30px;">
             {{$title}}
-        </div>
         @endif
         @if($desc)
             <div class="sub-title">
                 {{$desc}}
             </div>
         @endif
+        </div>
         <div class="list-item">
             @if($style_list === "normal")
                 <div class="row">
