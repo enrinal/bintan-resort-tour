@@ -7,7 +7,7 @@
             $list_sidebars = json_decode($list_sidebars);
         @endphp
         @foreach($list_sidebars as $item)
-            @include('News::frontend.layouts.sidebars.'.$item->type)
+            @include('Events::frontend.layouts.sidebars.'.$item->type)
         @endforeach
     @endif
 </aside>

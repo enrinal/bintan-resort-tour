@@ -14,7 +14,7 @@
             <div class="row">
                 @foreach($rows as $row)
                     <div class="col-lg-3 col-md-6">
-                        @include('News::frontend.blocks.list-news.loop')
+                        @include('Events::frontend.blocks.list-news.loop')
                     </div>
                 @endforeach
             </div>

@@ -9,13 +9,13 @@
 @section('content')
 <div class="bravo-news">
     @php
-        $title_page = setting_item("news_page_list_title");
+        $title_page = setting_item("events_page_list_title");
         if(!empty($custom_title_page)){
             $title_page = $custom_title_page;
         }
     @endphp
     @if(!empty($title_page))
-        <div class="bravo_banner" @if($bg = setting_item("news_page_list_banner")) style="background-image: url({{get_file_url($bg,'full')}})" @endif >
+        <div class="bravo_banner" @if($bg = setting_item("events_page_list_banner")) style="background-image: url({{get_file_url($bg,'full')}})" @endif >
             <div class="container">
                 <h1>
                     {{ $title_page }}
@@ -23,15 +23,14 @@
             </div>
         </div>
     @endif
-    @include('News::frontend.layouts.details.news-breadcrumb')
+    @include('Events::frontend.layouts.details.news-breadcrumb')
     <div class="bravo_content">
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    @include('News::frontend.layouts.details.news-detail')
+                    @include('Events::frontend.layouts.details.news-detail')
                 </div>
                 <div class="col-md-3">
-                    @include('News::frontend.layouts.details.news-sidebar')
                 </div> 
             </div>
         </div>

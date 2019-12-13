@@ -19,17 +19,17 @@ class CategoryEventsController extends FrontendController
     {
         $cat = EventsCategory::where('slug', $slug)->first();
         if (empty($cat)) {
-            return redirect('/news');
+            return redirect('/events');
         }
         $listEvents = Events::query();
-        $listEvents->select("core_news.*")
-                ->join('core_news_category', function ($join) use($cat) {
-                    $join->on('core_news_category.id', '=', 'core_news.cat_id')
-                         ->where('core_news_category._lft', '>=', $cat->_lft)
-                         ->where('core_news_category._rgt', '<=', $cat->_rgt);
+        $listEvents->select("core_events.*")
+                ->join('core_events_category', function ($join) use($cat) {
+                    $join->on('core_events_category.id', '=', 'core_events.cat_id')
+                         ->where('core_events_category._lft', '>=', $cat->_lft)
+                         ->where('core_events_category._rgt', '<=', $cat->_rgt);
                 })
-                ->where("core_news.status", "publish")
-                ->groupBy('core_news.id');
+                ->where("core_events.status", "publish")
+                ->groupBy('core_events.id');
 
 
         $translation = $cat->translateOrOrigin(app()->getLocale());
@@ -38,11 +38,11 @@ class CategoryEventsController extends FrontendController
             'rows'           => $listEvents->with("getAuthor")->with("getCategory")->paginate(5),
             'model_category'    => EventsCategory::where("status", "publish"),
             'model_tag'         => Tag::query(),
-            'model_news'        => Events::where("status", "publish"),
+            'model_events'        => Events::where("status", "publish"),
             'breadcrumbs'    => [
                 [
                     'name' => __('Events'),
-                    'url'  => route('news.index')
+                    'url'  => route('events.index')
                 ],
                 [
                     'name'  => $translation->name,

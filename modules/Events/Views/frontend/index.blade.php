@@ -9,7 +9,7 @@
 @section('content')
     <div class="bravo-news">
         @php
-            $title_page = setting_item_with_lang("news_page_list_title");
+            $title_page = setting_item_with_lang("events_page_list_title");
             if(!empty($custom_title_page)){
                 $title_page = $custom_title_page;
             }
@@ -21,14 +21,14 @@
                 </div>
             </div>
         @endif
-   {{--     @include('News::frontend.layouts.details.news-breadcrumb') --}}
+   {{--     @include('Events::frontend.layouts.details.news-breadcrumb') --}}
         <div class="bravo_content">
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
                         @if($rows->count() > 0)
                             <div class="list-news">
-                                @include('News::frontend.layouts.details.news-loop')
+                                @include('Events::frontend.layouts.details.news-loop')
                             </div>
                                 <hr>
                                 <div class="bravo-pagination">
@@ -42,7 +42,7 @@
                         @endif
                     </div>
                     <div class="col-md-3">
-                        @include('News::frontend.layouts.details.news-sidebar')
+                        <!-- @include('Events::frontend.layouts.details.news-sidebar') -->
                     </div>
                 </div>
             </div>
