@@ -22,16 +22,16 @@
                             </div>
                             <div class="item no-padding">
                                 <div class="group-icon">
-                                    <select name="user_type">
+                                    <!-- <select name="user_type">
                                         <option value="">{{__("-- User Type --")}}</option>
                                         <option value="customer">{{__("Customer User")}}</option>
                                         <option value="vendor">{{__("Vendor User")}}</option>
-                                    </select>
+                                    </select> -->
                                     <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="item no-padding">
-                                <div class="group-icon">
+                                <!-- <div class="group-icon">
                                     <?php
                                     $user = !empty(Request()->user_id) ? App\User::find(Request()->user_id) : false;
                                     \App\Helpers\AdminForm::select2('user_id', [
@@ -48,7 +48,7 @@
                                         $user->getDisplayName() . ' (#' . $user->id . ')'
                                     ] : false)
                                     ?>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="item">
                                 <div id="reportrange">

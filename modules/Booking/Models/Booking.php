@@ -283,15 +283,15 @@ class Booking extends BaseModel
             'class'  => 'purple',
             'icon'   => 'icon ion-ios-cart'
         ];
-        $res[] = [
-            'size'   => 6,
-            'size_md'=>3,
-            'title'  => __("Earning"),
-            'amount' => format_money_main($total_data->total_earning),
-            'desc'   => __("Total Earning"),
-            'class'  => 'pink',
-            'icon'   => 'icon ion-ios-gift'
-        ];
+        // $res[] = [
+        //     'size'   => 6,
+        //     'size_md'=>3,
+        //     'title'  => __("Earning"),
+        //     'amount' => format_money_main($total_data->total_earning),
+        //     'desc'   => __("Total Earning"),
+        //     'class'  => 'pink',
+        //     'icon'   => 'icon ion-ios-gift'
+        // ];
         $res[] = [
 
             'size'   => 6,
@@ -325,13 +325,14 @@ class Booking extends BaseModel
                     'data'            => [],
                     'backgroundColor' => '#8892d6',
                     'stack'           => 'group-total',
-                ],
-                [
-                    'label'           => __("Total Earning"),
-                    'data'            => [],
-                    'backgroundColor' => '#F06292',
-                    'stack'           => 'group-extra',
                 ]
+                    // ],
+                // [
+                //     'label'           => __("Total Earning"),
+                //     'data'            => [],
+                //     'backgroundColor' => '#F06292',
+                //     'stack'           => 'group-extra',
+                // ]
             ]
         ];
         $sql_raw[] = 'sum(`total`) as total_price';
@@ -354,7 +355,7 @@ class Booking extends BaseModel
                 $dataBooking = $dataBooking->first();
                 $data['labels'][] = date("F", strtotime($year . "-" . $month . "-01"));
                 $data['datasets'][0]['data'][] = $dataBooking->total_price ?? 0;
-                $data['datasets'][1]['data'][] = $dataBooking->total_earning ?? 0;
+                // $data['datasets'][1]['data'][] = $dataBooking->total_earning ?? 0;
             }
         } elseif (($to - $from) <= DAY_IN_SECONDS) {
             // Report By Hours
@@ -372,7 +373,7 @@ class Booking extends BaseModel
                 $dataBooking = $dataBooking->first();
                 $data['labels'][] = date('H:i', $i);
                 $data['datasets'][0]['data'][] = $dataBooking->total_price ?? 0;
-                $data['datasets'][1]['data'][] = $dataBooking->total_earning ?? 0;
+                // $data['datasets'][1]['data'][] = $dataBooking->total_earning ?? 0;
             }
         } else {
             // Report By Day
@@ -390,7 +391,7 @@ class Booking extends BaseModel
                 $dataBooking = $dataBooking->first();
                 $data['labels'][] = display_date($i);
                 $data['datasets'][0]['data'][] = $dataBooking->total_price ?? 0;
-                $data['datasets'][1]['data'][] = $dataBooking->total_earning ?? 0;
+                // $data['datasets'][1]['data'][] = $dataBooking->total_earning ?? 0;
             }
         }
         return $data;
@@ -562,19 +563,20 @@ class Booking extends BaseModel
                         'data'            => [],
                         'backgroundColor' => '#8892d6',
                         'stack'           => 'group-total',
-                    ],
-                    [
-                        'label'           => __("Total Fees"),
-                        'data'            => [],
-                        'backgroundColor' => '#45bbe0',
-                        'stack'           => 'group-extra',
-                    ],
-                    [
-                        'label'           => __("Total Commission"),
-                        'data'            => [],
-                        'backgroundColor' => '#F06292',
-                        'stack'           => 'group-extra',
                     ]
+                    // ],
+                    // [
+                    //     'label'           => __("Total Fees"),
+                    //     'data'            => [],
+                    //     'backgroundColor' => '#45bbe0',
+                    //     'stack'           => 'group-extra',
+                    // ],
+                    // [
+                    //     'label'           => __("Total Commission"),
+                    //     'data'            => [],
+                    //     'backgroundColor' => '#F06292',
+                    //     'stack'           => 'group-extra',
+                    // ]
                 ]
             ],
             "detail" => [
@@ -586,18 +588,18 @@ class Booking extends BaseModel
                     "title" => __("Total Revenue"),
                     "val"   => 0,
                 ],
-                "total_commission" => [
-                    "title" => __("Total Commission"),
-                    "val"   => 0,
-                ],
-                "total_fees" => [
-                    "title" => __("Total Fees"),
-                    "val"   => 0,
-                ],
-                "total_earning" => [
-                    "title" => __("Total Earning"),
-                    "val"   => 0,
-                ],
+                // "total_commission" => [
+                //     "title" => __("Total Commission"),
+                //     "val"   => 0,
+                // ],
+                // "total_fees" => [
+                //     "title" => __("Total Fees"),
+                //     "val"   => 0,
+                // ],
+                // "total_earning" => [
+                //     "title" => __("Total Earning"),
+                //     "val"   => 0,
+                // ],
             ]
         ];
         $sql_raw[] = 'sum(`total`) as total_price';
@@ -630,10 +632,10 @@ class Booking extends BaseModel
                 $data['chart']['datasets'][1]['data'][] = $dataBooking->total_fees ?? 0; // for total fees
                 $data['chart']['datasets'][2]['data'][] = $dataBooking->total_commission ?? 0; // for total commission
                 $data['detail']['total_price']['val'] += ($dataBooking->total_price ?? 0);
-                $data['detail']['total_booking']['val'] += $dataBooking->total_booking ?? 0;
-                $data['detail']['total_commission']['val'] += $dataBooking->total_commission ?? 0;
-                $data['detail']['total_fees']['val'] += $dataBooking->total_fees ?? 0;
-                $data['detail']['total_earning']['val'] += ( $dataBooking->total_fees + $dataBooking->total_commission );
+                //$data['detail']['total_booking']['val'] += $dataBooking->total_booking ?? 0;
+             // $data['detail']['total_commission']['val'] += $dataBooking->total_commission ?? 0;
+               // $data['detail']['total_fees']['val'] += $dataBooking->total_fees ?? 0;
+               // $data['detail']['total_earning']['val'] += ( $dataBooking->total_fees + $dataBooking->total_commission );
                 if ($statuses) {
                     foreach ($statuses as $status) {
                         $data['detail'][$status]['title'] = booking_status_to_text($status);
@@ -657,13 +659,13 @@ class Booking extends BaseModel
                 $dataBooking = $dataBooking->first();
                 $data['chart']['labels'][] = date('H:i', $i);
                 $data['chart']['datasets'][0]['data'][] = $dataBooking->total_price ?? 0; // for total price
-                $data['chart']['datasets'][1]['data'][] = $dataBooking->total_fees ?? 0; // for total fees
-                $data['chart']['datasets'][2]['data'][] = $dataBooking->total_commission ?? 0; // for total commission
+                // $data['chart']['datasets'][1]['data'][] = $dataBooking->total_fees ?? 0; // for total fees
+                // $data['chart']['datasets'][2]['data'][] = $dataBooking->total_commission ?? 0; // for total commission
                 $data['detail']['total_price']['val'] += ($dataBooking->total_price ?? 0);
-                $data['detail']['total_booking']['val'] += $dataBooking->total_booking ?? 0;
-                $data['detail']['total_commission']['val'] += $dataBooking->total_commission ?? 0;
-                $data['detail']['total_fees']['val'] += $dataBooking->total_fees ?? 0;
-                $data['detail']['total_earning']['val'] += ( $dataBooking->total_fees + $dataBooking->total_commission );
+                //$data['detail']['total_booking']['val'] += $dataBooking->total_booking ?? 0;
+             // $data['detail']['total_commission']['val'] += $dataBooking->total_commission ?? 0;
+               // $data['detail']['total_fees']['val'] += $dataBooking->total_fees ?? 0;
+               // $data['detail']['total_earning']['val'] += ( $dataBooking->total_fees + $dataBooking->total_commission );
                 if ($statuses) {
                     foreach ($statuses as $status) {
                         $data['detail'][$status]['title'] = booking_status_to_text($status);
@@ -687,13 +689,13 @@ class Booking extends BaseModel
                 $dataBooking = $dataBooking->first();
                 $data['chart']['labels'][] = display_date($i);
                 $data['chart']['datasets'][0]['data'][] = $dataBooking->total_price ?? 0; // for total price
-                $data['chart']['datasets'][1]['data'][] = $dataBooking->total_fees ?? 0; // for total fees
-                $data['chart']['datasets'][2]['data'][] = $dataBooking->total_commission ?? 0; // for total commission
+                // $data['chart']['datasets'][1]['data'][] = $dataBooking->total_fees ?? 0; // for total fees
+                // $data['chart']['datasets'][2]['data'][] = $dataBooking->total_commission ?? 0; // for total commission
                 $data['detail']['total_price']['val'] += ($dataBooking->total_price ?? 0);
-                $data['detail']['total_booking']['val'] += $dataBooking->total_booking ?? 0;
-                $data['detail']['total_commission']['val'] += $dataBooking->total_commission ?? 0;
-                $data['detail']['total_fees']['val'] += $dataBooking->total_fees ?? 0;
-                $data['detail']['total_earning']['val'] += ( $dataBooking->total_fees + $dataBooking->total_commission );
+                //$data['detail']['total_booking']['val'] += $dataBooking->total_booking ?? 0;
+             // $data['detail']['total_commission']['val'] += $dataBooking->total_commission ?? 0;
+               // $data['detail']['total_fees']['val'] += $dataBooking->total_fees ?? 0;
+               // $data['detail']['total_earning']['val'] += ( $dataBooking->total_fees + $dataBooking->total_commission );
                 if ($statuses) {
                     foreach ($statuses as $status) {
                         $data['detail'][$status]['title'] = booking_status_to_text($status);
@@ -703,9 +705,9 @@ class Booking extends BaseModel
             }
         }
         $data['detail']['total_price']['val'] = format_money_main($data['detail']['total_price']['val']);
-        $data['detail']['total_commission']['val'] = format_money_main($data['detail']['total_commission']['val']);
-        $data['detail']['total_fees']['val'] = format_money_main($data['detail']['total_fees']['val']);
-        $data['detail']['total_earning']['val'] = format_money_main($data['detail']['total_earning']['val']);
+        // $data['detail']['total_commission']['val'] = format_money_main($data['detail']['total_commission']['val']);
+        // $data['detail']['total_fees']['val'] = format_money_main($data['detail']['total_fees']['val']);
+        // $data['detail']['total_earning']['val'] = format_money_main($data['detail']['total_earning']['val']);
         return $data;
     }
 
