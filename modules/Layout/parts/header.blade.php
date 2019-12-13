@@ -115,6 +115,9 @@
             <ul class="multi-lang">
                 @include('Language::frontend.switcher')
             </ul>
+            <ul class="multi-lang">
+                @include('Core::frontend.currency-switcher')
+            </ul>
         </div>
         <div class="g-menu">
             <?php generate_menu('primary') ?>
