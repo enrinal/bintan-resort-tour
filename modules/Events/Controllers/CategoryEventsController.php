@@ -4,11 +4,11 @@ namespace Modules\Events\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\FrontendController;
-use Modules\Events\Models\NewsCategory;
+use Modules\Events\Models\EventsCategory;
 use Modules\Events\Models\Tag;
-use Modules\Events\Models\News;
+use Modules\Events\Models\Events;
 
-class CategoryNewsController extends FrontendController
+class CategoryEventsController extends FrontendController
 {
     public function __construct()
     {
@@ -17,12 +17,12 @@ class CategoryNewsController extends FrontendController
 
     public function index(Request $request, $slug)
     {
-        $cat = NewsCategory::where('slug', $slug)->first();
+        $cat = EventsCategory::where('slug', $slug)->first();
         if (empty($cat)) {
             return redirect('/news');
         }
-        $listNews = News::query();
-        $listNews->select("core_news.*")
+        $listEvents = Events::query();
+        $listEvents->select("core_news.*")
                 ->join('core_news_category', function ($join) use($cat) {
                     $join->on('core_news_category.id', '=', 'core_news.cat_id')
                          ->where('core_news_category._lft', '>=', $cat->_lft)
@@ -35,13 +35,13 @@ class CategoryNewsController extends FrontendController
         $translation = $cat->translateOrOrigin(app()->getLocale());
 
         $data = [
-            'rows'           => $listNews->with("getAuthor")->with("getCategory")->paginate(5),
-            'model_category'    => NewsCategory::where("status", "publish"),
+            'rows'           => $listEvents->with("getAuthor")->with("getCategory")->paginate(5),
+            'model_category'    => EventsCategory::where("status", "publish"),
             'model_tag'         => Tag::query(),
-            'model_news'        => News::where("status", "publish"),
+            'model_news'        => Events::where("status", "publish"),
             'breadcrumbs'    => [
                 [
-                    'name' => __('News'),
+                    'name' => __('Events'),
                     'url'  => route('news.index')
                 ],
                 [
@@ -53,6 +53,6 @@ class CategoryNewsController extends FrontendController
             'seo_meta'  => $cat->getSeoMetaWithTranslation(app()->getLocale(),$translation),
             'translation'=>$translation
         ];
-        return view('News::frontend.index', $data);
+        return view('Events::frontend.index', $data);
     }
 }
