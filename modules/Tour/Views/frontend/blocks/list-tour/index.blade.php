@@ -1,7 +1,7 @@
 <div class="bravo-list-tour {{$style_list}}">
     <div class="container-fluid">
         @if($title)
-            <div class="title">
+            <div class="title title_style" style="margin-bottom: 30px;">
                 {{$title}}
                 @if(!empty($desc))
                     <div class="sub-title">
