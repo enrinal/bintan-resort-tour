@@ -41,6 +41,7 @@ $menus = [
     ]
 ];
 
+/*
 // Modules
 $custom_modules = \Modules\ServiceProvider::getModules();
 if(!empty($custom_modules)){
@@ -67,6 +68,7 @@ if(!empty($custom_modules)){
         }
     }
 }
+ */
 
 // Custom Menu
 $custom_modules = \Custom\ServiceProvider::getModules();
