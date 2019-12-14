@@ -26,7 +26,7 @@
         @endif
     </div>
 </div>
-@if(!empty($row->duration) or !empty($row->category_tour->name) or !empty($row->max_people) or !empty($row->location->name))
+@if(!empty($row->duration) or !empty($row->category_attraction->name) or !empty($row->max_people) or !empty($row->location->name))
     <div class="g-tour-feature">
     <div class="row">
         @if($row->duration)
@@ -56,7 +56,7 @@
                         <i class="icofont-beach"></i>
                     </div>
                     <div class="info">
-                        <h4 class="name">{{__("Tour Type")}}</h4>
+                        <h4 class="name">{{__("Attractions Type")}}</h4>
                         <p class="value">
                             {{$cat->name ?? ''}}
                         </p>
@@ -166,7 +166,7 @@
 @if($row->map_lat && $row->map_lng)
 <div class="g-location">
     <div class="location-title">
-        <h3>{{__("Tour Location")}}</h3>
+        <h3>{{__("Attraction Location")}}</h3>
         @if($translation->address)
             <div class="address">
                 <i class="icofont-location-arrow"></i>

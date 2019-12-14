@@ -40,7 +40,7 @@
         </div>
         <div class="g-filter-item">
             <div class="item-title">
-                <h4>{{__("Tour Type")}}</h4>
+                <h4>{{__("Attractions Type")}}</h4>
                 <i class="fa fa-angle-up" aria-hidden="true"></i>
             </div>
             <div class="item-content">
