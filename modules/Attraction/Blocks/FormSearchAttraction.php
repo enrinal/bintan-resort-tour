@@ -51,6 +51,6 @@ class FormSearchAttraction extends BaseBlock
         if (!empty($model['bg_image'])) {
             $data['bg_image_url'] = FileHelper::url($model['bg_image'], 'full');
         }
-        return view('Attraction::frontend.blocks.form-search-tour.index', $data);
+        return view('Attraction::frontend.blocks.form-search-attraction.index', $data);
     }
 }
