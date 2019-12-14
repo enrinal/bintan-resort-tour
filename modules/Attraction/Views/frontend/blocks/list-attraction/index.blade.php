@@ -1,7 +1,7 @@
 <div class="bravo-list-tour {{$style_list}}">
     <div class="container-fluid">
         @if($title)
-            <div class="title">
+            <div class="title title_style">
                 {{$title}}
                 @if(!empty($desc))
                     <div class="sub-title">
@@ -31,7 +31,7 @@
                 <div class="row row-eq-height">
                     @foreach($rows as $row)
                         <div class="col-lg-{{$col ?? 3}} col-md-6 col-item">
-                            @include('Attraction::frontend.blocks.list-tour.loop-box-shadow')
+                            @include('Attraction::frontend.blocks.list-attraction.loop-box-shadow')
                         </div>
                     @endforeach
                 </div>

@@ -4,7 +4,7 @@
     </div>
     <div class="col-lg-9 col-md-12">
         <div class="bravo-list-item">
-            <div class="topbar-search">
+         {{--   <div class="topbar-search">
                 <div class="text">
                     @if($rows->total() > 1)
                         {{ __(":count attractions found",['count'=>$rows->total()]) }}
@@ -15,7 +15,7 @@
                 <div class="control">
 
                 </div>
-            </div>
+            </div> --}}
             <div class="list-item">
                 <div class="row">
                     @if($rows->total() > 0)
