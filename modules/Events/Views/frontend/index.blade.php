@@ -23,7 +23,7 @@
             </div>
         @endif
    {{--     @include('Events::frontend.layouts.details.news-breadcrumb') --}}
-        <div class="featured-content adventure-holder">
+        <div class="featured-content adventure-holder" style="padding: 30px 0;">
             <div class="container-fluid">
                         @if($rows->count() > 0)
                           

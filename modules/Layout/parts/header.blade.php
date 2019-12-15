@@ -1,4 +1,4 @@
-<div class="bravo_header">
+<div class="bravo_header sticky-top">
     <div class="{{$container_class ?? 'container-fluid'}}">
         <div class="content">
             <div class="header-left">
