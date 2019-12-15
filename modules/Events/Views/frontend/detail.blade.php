@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('head')
-    <link href="{{ asset('module/news/css/news.css?_ver='.config('app.version')) }}" rel="stylesheet">
+    <link href="{{ asset('module/event/css/event.css?_ver='.config('app.version')) }}" rel="stylesheet">
     <link href="{{ asset('css/app.css?_ver='.config('app.version')) }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset("libs/daterange/daterangepicker.css") }}" >
-    <link rel="stylesheet" type="text/css" href="{{ asset("libs/ion_rangeslider/css/ion.rangeSlider.min.css") }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset("libs/fotorama/fotorama.css") }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset("libs/daterange/daterangepicker.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset("libs/daterange/mains.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset("libs/ion_rangeslider/css/ion.rangeSlider.min.css") }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset("libs/fotorama/fotorama.css") }}"/>
 @endsection
 @section('content')
 <div class="bravo-news">

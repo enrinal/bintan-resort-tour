@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('head')
-    <link href="{{ asset('module/news/css/news.css?_ver='.config('app.version')) }}" rel="stylesheet">
+    <link href="{{ asset('module/event/css/event.css?_ver='.config('app.version')) }}" rel="stylesheet">
     <link href="{{ asset('css/app.css?_ver='.config('app.version')) }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset("libs/daterange/daterangepicker.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset("module/event/css/animate.css") }}">
     <link rel="stylesheet" type="text/css" href="{{ asset("libs/ion_rangeslider/css/ion.rangeSlider.min.css") }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset("libs/fotorama/fotorama.css") }}"/>
 @endsection
@@ -22,14 +23,12 @@
             </div>
         @endif
    {{--     @include('Events::frontend.layouts.details.news-breadcrumb') --}}
-        <div class="bravo_content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9">
+        <div class="featured-content adventure-holder">
+            <div class="container-fluid">
                         @if($rows->count() > 0)
-                            <div class="list-news">
+                          
                                 @include('Events::frontend.layouts.details.news-loop')
-                            </div>
+                            
                                 <hr>
                                 <div class="bravo-pagination">
                                     {{$rows->appends(request()->query())->links()}}
@@ -40,11 +39,8 @@
                                 {{__("Sorry, but nothing matched your search terms. Please try again with some different keywords.")}}
                             </div>
                         @endif
-                    </div>
-                    <div class="col-md-3">
-                        <!-- @include('Events::frontend.layouts.details.news-sidebar') -->
-                    </div>
-                </div>
+                   
+                
             </div>
         </div>
     </div>

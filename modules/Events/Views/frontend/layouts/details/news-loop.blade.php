@@ -1,25 +1,18 @@
 @foreach($rows as $row)
-    @php
-        $translation = $row->translateOrOrigin(app()->getLocale()); @endphp
-    <div class="post_item">
-        <div class="header">
-            @if($image_tag = get_image_tag($row->image_id,'full'))
-                <header class="post-header fl">
-                    <a href="{{$row->getDetailUrl()}}">
-                        {!! $image_tag !!}
-                    </a>
-                </header>
-                
-            @endif
-            <div class="post-inner fr">
-                <h4 class="post-title">
-                    <a class="text-darken" href="{{$row->getDetailUrl()}}"> {{$translation->title}}</a>
-                </h4>
-                <div class="post-desciption">
-                    {!! get_exceprt($translation->content) !!}
-                </div>
-                <a class="btn-readmore" href="{{$translation->lang}}">{{ __('Link Event')}}</a>
-            </div>
-        </div>
-    </div>
-@endforeach
+@php
+$translation = $row->translateOrOrigin(app()->getLocale()); @endphp
+<div class="row same-height">
+                            <div class="col-lg-6 image height  slideInLeft">
+                                <div class="bg-stretch">
+                                    <img class="img-responsive" src="{{get_file_url($row->image_id,'medium')}}" height="475" width="960" alt="image description">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 text-block height slideInRight">
+                                <div class="centered">
+                                    <h2 class="intro-heading">{{$translation->title}}</h2>
+                                    <p class="intro">{!! get_exceprt($translation->content,160,"...") !!}</p>
+                                    <a href="{{$row->getDetailUrl()}}" class="btn btn-primary btn-md">Go to the event’s website</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
