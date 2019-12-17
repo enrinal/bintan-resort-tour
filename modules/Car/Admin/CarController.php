@@ -26,7 +26,7 @@ class CarController extends AdminController
     public function __construct()
     {
         parent::__construct();
-        $this->setActiveMenu('admin/module/car');
+        $this->setActiveMenu('admin/module/merchandise');
         $this->car = Car::class;
         $this->car_translation = CarTranslation::class;
         $this->car_term = CarTerm::class;
@@ -91,8 +91,8 @@ class CarController extends AdminController
             'translation'    => new $this->car_translation(),
             'breadcrumbs'    => [
                 [
-                    'name' => __('Merchandises'),
-                    'url'  => 'admin/module/car'
+                    'name' => __('Merchandise'),
+                    'url'  => 'admin/module/merchandise'
                 ],
                 [
                     'name'  => __('Add Merchandise'),
@@ -126,8 +126,8 @@ class CarController extends AdminController
             'enable_multi_lang'=>true,
             'breadcrumbs'    => [
                 [
-                    'name' => __('Merchandises'),
-                    'url'  => 'admin/module/car'
+                    'name' => __('Merchandise'),
+                    'url'  => 'admin/module/merchandise'
                 ],
                 [
                     'name'  => __('Edit Merchandise'),

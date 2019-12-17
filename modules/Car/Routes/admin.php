@@ -17,7 +17,7 @@ Route::group(['prefix'=>'attribute'],function (){
 
     Route::get('terms/{id}','AttributeController@terms')->name('car.admin.attribute.term.index');
     Route::get('term_edit/{id}','AttributeController@term_edit')->name('car.admin.attribute.term.edit');
-    Route::get('term_store','AttributeController@term_store')->name('car.admin.attribute.term.store');
+    Route::post('term_store','AttributeController@term_store')->name('car.admin.attribute.term.store');
 
     Route::get('getForSelect2','AttributeController@getForSelect2')->name('car.admin.attribute.term.getForSelect2');
 });

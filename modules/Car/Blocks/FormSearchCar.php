@@ -34,7 +34,7 @@ class FormSearchCar extends BaseBlock
 
     public function getName()
     {
-        return __('Merchandise: Form Search');
+        return __('Car: Form Search');
     }
 
     public function content($model = [])

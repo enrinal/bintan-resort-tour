@@ -101,7 +101,7 @@ class ListCar extends BaseBlock
 
     public function getName()
     {
-        return __('Merchandise: List Items');
+        return __('Car: List Items');
     }
 
     public function content($model = [])

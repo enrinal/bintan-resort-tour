@@ -2,9 +2,9 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between mb20">
-            <h1 class="title-bar">{{__("All Merchandises")}}</h1>
+            <h1 class="title-bar">{{__("All Cars")}}</h1>
             <div class="title-actions">
-                <a href="{{route('car.admin.create')}}" class="btn btn-primary">{{__("Add new merchandise")}}</a>
+                <a href="{{route('car.admin.create')}}" class="btn btn-primary">{{__("Add new car")}}</a>
             </div>
         </div>
         @include('admin.message')
@@ -26,7 +26,28 @@
                 @endif
             </div>
             <div class="col-left">
-                
+                <form method="get" action="{{route('car.admin.index')}} " class="filter-form filter-form-right d-flex justify-content-end flex-column flex-sm-row" role="search">
+                    @if(!empty($rows) and $car_manage_others)
+                        <?php
+                        $user = !empty(Request()->vendor_id) ? App\User::find(Request()->vendor_id) : false;
+                        \App\Helpers\AdminForm::select2('vendor_id', [
+                            'configs' => [
+                                'ajax'        => [
+                                    'url'      => url('/admin/module/user/getForSelect2'),
+                                    'dataType' => 'json'
+                                ],
+                                'allowClear'  => true,
+                                'placeholder' => __('-- Vendor --')
+                            ]
+                        ], !empty($user->id) ? [
+                            $user->id,
+                            $user->name_or_email . ' (#' . $user->id . ')'
+                        ] : false)
+                        ?>
+                    @endif
+                    <input type="text" name="s" value="{{ Request()->s }}" placeholder="{{__('Search by name')}}" class="form-control">
+                    <button class="btn-info btn btn-icon btn_search" type="submit">{{__('Search')}}</button>
+                </form>
             </div>
         </div>
         <div class="text-right">
@@ -41,7 +62,10 @@
                         <tr>
                             <th width="60px"><input type="checkbox" class="check-all"></th>
                             <th> {{ __('Name')}}</th>
+                            <th width="200px"> {{ __('Location')}}</th>
+                            <th width="130px"> {{ __('Author')}}</th>
                             <th width="100px"> {{ __('Status')}}</th>
+                            <th width="100px"> {{ __('Reviews')}}</th>
                             <th width="100px"> {{ __('Date')}}</th>
                             <th width="100px"></th>
                         </tr>
@@ -54,8 +78,21 @@
                                     </td>
                                     <td class="title">
                                         <a href="{{route('car.admin.edit',['id'=>$row->id])}}">{{$row->title}}</a>
-                                    </td>                    
-                                    <td><span class="badge badge-{{ $row->status }}">{{ $row->status }}</span></td>                                    
+                                    </td>
+                                    <td>{{$row->location->name ?? ''}}</td>
+                                    <td>
+                                        @if(!empty($row->author))
+                                            {{$row->author->getDisplayName()}}
+                                        @else
+                                            {{__("[Author Deleted]")}}
+                                        @endif
+                                    </td>
+                                    <td><span class="badge badge-{{ $row->status }}">{{ $row->status }}</span></td>
+                                    <td>
+                                        <a target="_blank" href="{{ url("/admin/module/review?service_id=".$row->id) }}" class="review-count-approved">
+                                            {{ $row->getNumberReviewsInService() }}
+                                        </a>
+                                    </td>
                                     <td>{{ display_date($row->updated_at)}}</td>
                                     <td>
                                         <a href="{{route('car.admin.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}
@@ -65,7 +102,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7">{{__("No merchandise found")}}</td>
+                                <td colspan="7">{{__("No car found")}}</td>
                             </tr>
                         @endif
                         </tbody>

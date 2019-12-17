@@ -35,7 +35,7 @@
                         @endif
                     </div>
                     <div class="col-left">
-                        <form method="get" action="{{url('/admin/module/car/attribute')}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
+                        <form method="get" action="{{url('/admin/module/merchandise/attribute')}} " class="filter-form filter-form-right d-flex justify-content-end" role="search">
                             <input type="text" name="s" value="{{ Request()->s }}" class="form-control" placeholder="{{__("Search by name")}}">
                             <button class="btn-info btn btn-icon btn_search" id="search-submit" type="submit">{{__('Search')}}</button>
                         </form>

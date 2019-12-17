@@ -32,7 +32,7 @@ class ModuleProvider extends ModuleServiceProvider
     {
         return [
             'events'=>[
-                "position"=>10,
+                "position"=>46,
                 'url'        => 'admin/module/events',
                 'title'      => __("Events"),
                 'icon'       => 'fa fa-calendar',

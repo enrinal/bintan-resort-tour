@@ -64,9 +64,7 @@
         </div>
     </div>
 @endif
-{{--
 @include('Car::frontend.layouts.details.attributes')
---}}
 @if($translation->faqs)
 <div class="g-faq">
     <h3> {{__("FAQs")}} </h3>

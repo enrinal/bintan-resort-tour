@@ -17,7 +17,7 @@ class AttributeController extends AdminController
     protected $termsClass;
     public function __construct()
     {
-        $this->setActiveMenu('admin/module/car');
+        $this->setActiveMenu('admin/module/merchandise');
         parent::__construct();
         $this->attributesClass = Attributes::class;
         $this->termsClass = Terms::class;
@@ -47,7 +47,7 @@ class AttributeController extends AdminController
             'breadcrumbs' => [
                 [
                     'name' => __('Merchandise'),
-                    'url'  => 'admin/module/car'
+                    'url'  => 'admin/module/merchandise'
                 ],
                 [
                     'name'  => __('Attributes'),
@@ -73,12 +73,12 @@ class AttributeController extends AdminController
             'row'         => $row,
             'breadcrumbs' => [
                 [
-                    'name' => __('Car'),
-                    'url'  => 'admin/module/car'
+                    'name' => __('Merchandise'),
+                    'url'  => 'admin/module/merchandise'
                 ],
                 [
                     'name' => __('Attributes'),
-                    'url'  => 'admin/module/car/attribute'
+                    'url'  => 'admin/module/merchandise/attribute'
                 ],
                 [
                     'name'  => __('Attribute: :name', ['name' => $row->name]),
@@ -154,12 +154,12 @@ class AttributeController extends AdminController
             'translation'    => new TermsTranslation(),
             'breadcrumbs' => [
                 [
-                    'name' => __('Car'),
-                    'url'  => 'admin/module/car'
+                    'name' => __('Merchandise'),
+                    'url'  => 'admin/module/merchandise'
                 ],
                 [
                     'name' => __('Attributes'),
-                    'url'  => 'admin/module/car/attribute'
+                    'url'  => 'admin/module/merchandise/attribute'
                 ],
                 [
                     'name'  => __('Attribute: :name', ['name' => $row->name]),
@@ -185,16 +185,16 @@ class AttributeController extends AdminController
             'enable_multi_lang'=>true,
             'breadcrumbs' => [
                 [
-                    'name' => __('Car'),
-                    'url'  => 'admin/module/car'
+                    'name' => __('Merchandise'),
+                    'url'  => 'admin/module/merchandise'
                 ],
                 [
                     'name' => __('Attributes'),
-                    'url'  => 'admin/module/car/attribute'
+                    'url'  => 'admin/module/merchandise/attribute'
                 ],
                 [
                     'name' => $attr->name,
-                    'url'  => 'admin/module/car/attribute/terms/' . $row->attr_id
+                    'url'  => 'admin/module/merchandise/attribute/terms/' . $row->attr_id
                 ],
                 [
                     'name'  => __('Term: :name', ['name' => $row->name]),
@@ -260,7 +260,7 @@ class AttributeController extends AdminController
         if($pre_selected && $selected){
             if(is_array($selected))
             {
-                $query = $this->termsClass::getForSelect2Query('Car');
+                $query = $this->termsClass::getForSelect2Query('Merchandise');
                 $items = $query->whereIn('bravo_terms.id',$selected)->take(50)->get();
                 return response()->json([
                     'items'=>$items
@@ -278,7 +278,7 @@ class AttributeController extends AdminController
             }
         }
         $q = $request->query('q');
-        $query = $this->termsClass::getForSelect2Query('Car',$q);
+        $query = $this->termsClass::getForSelect2Query('Merchandise',$q);
         $res = $query->orderBy('bravo_terms.id', 'desc')->limit(20)->get();
         return response()->json([
             'results' => $res
