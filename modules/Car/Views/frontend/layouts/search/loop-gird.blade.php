@@ -7,7 +7,7 @@
             {{__("Featured")}}
         </div>
     @endif
-    <div class="thumb-image ">
+    <div class="thumb-image">
         <a @if(!empty($blank)) target="_blank" @endif href="{{$row->getDetailUrl($include_param ?? true)}}">
             @if($row->image_url)
                 @if(!empty($disable_lazyload))
@@ -38,7 +38,7 @@
             {{$location->name ?? ''}}
         @endif
     </div>
-    <div class="amenities clearfix">
+  {{--  <div class="amenities clearfix">
         @if($row->passenger)
             <span class="amenity total" data-toggle="tooltip"  title="{{ __("Passenger") }}">
                 <i class="input-icon field-icon icon-passenger  "></i>
@@ -71,12 +71,9 @@
                 </span>
             </span>
         @endif
-    </div>
+    </div> --}}
     <div class="info">
         <div class="g-price">
-            <div class="prefix">
-                <span class="fr_text">{{__("from")}}</span>
-            </div>
             <div class="price">
                 <span class="onsale">{{ $row->display_sale_price }}</span>
                 <span class="text-price">{{ $row->display_price }} <span class="unit">{{__("")}}</span></span>

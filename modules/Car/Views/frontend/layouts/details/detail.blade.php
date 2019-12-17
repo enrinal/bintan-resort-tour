@@ -7,31 +7,21 @@
 <div class="g-header">
     <div class="left">
         <h2>{{$translation->title}}</h2>
-        @if($translation->address)
-            <p class="address"><i class="fa fa-map-marker"></i>
-                {{$translation->address}}
-            </p>
-        @endif
     </div>
     <div class="right">
-        @if($row->getReviewEnable())
-            @if($review_score)
+        
                 <div class="review-score">
                     <div class="head">
                         <div class="left">
-                            <span class="head-rating">{{$review_score['score_text']}}</span>
-                            <span class="text-rating">{{__("from :number reviews",['number'=>$review_score['total_review']])}}</span>
-                        </div>
-                        <div class="score">
-                            {{$review_score['score_total']}}<span>/5</span>
+                            <span class="onsale" style="text-decoration: line-through; font-size: 14px; color: #c03 !important;font-weight: 400;">{{ $row->display_sale_price }}</span><br />
+                            <span class="text-lg">{{ $row->display_price }}</span>
                         </div>
                     </div>
                     <div class="foot">
-                        {{__(":number% of guests recommend",['number'=>$row->recommend_percent])}}
+                       
                     </div>
                 </div>
-            @endif
-        @endif
+         
     </div>
 </div>
 
@@ -74,7 +64,9 @@
         </div>
     </div>
 @endif
+{{--
 @include('Car::frontend.layouts.details.attributes')
+--}}
 @if($translation->faqs)
 <div class="g-faq">
     <h3> {{__("FAQs")}} </h3>

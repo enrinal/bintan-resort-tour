@@ -10,15 +10,15 @@
         <div class="bravo_content">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 col-lg-9">
+                    <div class="col-md-12 offset-lg-1 col-lg-10">
                         @php $review_score = $row->review_data @endphp
                         @include('Car::frontend.layouts.details.detail')
-                        @include('Car::frontend.layouts.details.review')
+                       {{-- @include('Car::frontend.layouts.details.review') --}}
                     </div>
-                    <div class="col-md-12 col-lg-3">
+                   {{--  <div class="col-md-12 col-lg-3">
                         
-                        @include('Car::frontend.layouts.details.form-book')
-                    </div>
+                       @include('Car::frontend.layouts.details.form-book') 
+                    </div>--}}
                 </div>
                 <div class="row end_tour_sticky">
                     <div class="col-md-12">
@@ -53,7 +53,7 @@
     <script>
         var bravo_booking_data = {!! json_encode($booking_data) !!}
         var bravo_booking_i18n = {
-			no_date_select:'{{__('Please select Start and End date')}}',
+            no_date_select:'{{__('Please select Start and End date')}}',
             no_guest_select:'{{__('Please select at least one number')}}',
             load_dates_url:'{{route('car.vendor.availability.loadDates')}}'
         };

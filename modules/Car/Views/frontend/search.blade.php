@@ -6,11 +6,11 @@
 @section('content')
     <div class="bravo_search_space">
         <div class="bravo_banner" @if($bg = setting_item("car_page_search_banner")) style="background-image: url({{get_file_url($bg,'full')}})" @endif >
-            <div class="container">
+          {{--  <div class="container">
                 <h1>
                     {{setting_item_with_lang("car_page_search_title")}}
                 </h1>
-            </div>
+            </div> --}}
         </div>
         <div class="bravo_form_search">
             <div class="container">

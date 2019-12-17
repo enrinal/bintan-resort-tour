@@ -5,13 +5,7 @@
     <div class="col-lg-9 col-md-12">
         <div class="bravo-list-item">
             <div class="topbar-search">
-                <div class="text">
-                    @if($rows->total() > 1)
-                        {{ __(":count merchandises found",['count'=>$rows->total()]) }}
-                    @else
-                        {{ __(":count merchandise found",['count'=>$rows->total()]) }}
-                    @endif
-                </div>
+                
                 <div class="control">
 
                 </div>
