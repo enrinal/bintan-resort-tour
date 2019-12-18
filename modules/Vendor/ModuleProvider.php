@@ -38,7 +38,7 @@ class ModuleProvider extends ModuleServiceProvider
 
     public static function getTemplateBlocks(){
         return [
-            'vendor_register_form'=>"\\Modules\\Vendor\\Blocks\\VendorRegisterForm",
+           // 'vendor_register_form'=>"\\Modules\\Vendor\\Blocks\\VendorRegisterForm",
         ];
     }
     public static function getUserMenu()

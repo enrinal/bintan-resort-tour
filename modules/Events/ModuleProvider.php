@@ -65,7 +65,7 @@ class ModuleProvider extends ModuleServiceProvider
 
     public static function getTemplateBlocks(){
         return [
-            'list_events'=>"\\Modules\\Events\\Blocks\\ListNews",
+            'list_events'=>"\\Modules\\Events\\Blocks\\ListEvents",
         ];
     }
 }

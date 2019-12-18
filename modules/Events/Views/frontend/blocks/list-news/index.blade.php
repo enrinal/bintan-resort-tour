@@ -1,4 +1,4 @@
-<div class="bravo-list-news">
+<div class="bravo-list-news" style="padding-top: 30px; padding-bottom: 30px;">
     <div class="container-fluid" style="padding-right: 30px; padding-left: 30px">
         @if($title)
             <div class="title title_style" style="margin-bottom: 30px;">
