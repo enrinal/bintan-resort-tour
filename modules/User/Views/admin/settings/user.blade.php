@@ -1,4 +1,4 @@
-@if(is_default_lang())
+{{-- @if(is_default_lang())
     <div class="row">
         <div class="col-sm-4">
             <h3 class="form-group-title">{{__("Inbox System")}}</h3>
@@ -17,10 +17,9 @@
             </div>
         </div>
     </div>
-@endif
+@endif --}}
 
 @if(is_default_lang())
-    <hr>
     <div class="row">
         <div class="col-sm-4">
             <h3 class="form-group-title">{{__("Google reCapcha Options")}}</h3>

@@ -7,7 +7,7 @@ $translation = $row->translateOrOrigin(app()->getLocale()); @endphp
         <div class="centered">
             <h2 class="intro-heading">{{$translation->title}}</h2>
             <p class="intro">{!! get_exceprt($translation->content,160,"...") !!}</p>
-            <a href="{{url($row->lang)}}" class="btn btn-primary btn-md">Go to the event’s website</a>
+            <a href="{{url($row->link)}}" class="btn btn-primary btn-md" target="_blank">Go to the event’s website</a>
         </div>
     </div>
     <div class="col-lg-6 image height  slideInLeft">
@@ -27,7 +27,7 @@ $translation = $row->translateOrOrigin(app()->getLocale()); @endphp
         <div class="centered">
             <h2 class="intro-heading">{{$translation->title}}</h2>
             <p class="intro">{!! get_exceprt($translation->content,160,"...") !!}</p>
-            <a href="{{url($row->lang)}}" class="btn btn-primary btn-md">Go to the event’s website</a>
+            <a href="{{url($row->link)}}" class="btn btn-primary btn-md" target="_blank">Go to the event’s website</a>
         </div>
     </div>
 </div>

@@ -12,6 +12,7 @@ class Events extends BaseModel
     protected $fillable = [
         'title',
         'lang',
+        'link',
         'content',
         'status',
         'slug',

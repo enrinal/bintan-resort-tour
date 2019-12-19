@@ -48,9 +48,6 @@
                                 </div>
                             </div>
                         </div>
-
-                      
-
                         @if(is_default_lang())
                             <div class="panel">
                                 <div class="panel-body">

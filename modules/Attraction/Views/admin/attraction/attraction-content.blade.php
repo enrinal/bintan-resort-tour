@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label">{{__("Description")}}</label>
+            <label class="control-label">{{__("Term and Condition")}}</label>
             <div class="">
-                <textarea name="short_desc" class="form-control" cols="30" rows="4">{{$translation->short_desc}}</textarea>
+                <textarea name="short_desc" class="d-none has-ckeditor" cols="30" rows="10">{{$translation->short_desc}}</textarea>
             </div>
         </div>
         @if(is_default_lang())

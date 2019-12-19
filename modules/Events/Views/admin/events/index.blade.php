@@ -59,7 +59,7 @@
                                             </td>
                                             
                                             <td> {{ display_date($row->updated_at)}}</td>
-                                            <td> {{ $row->lang}}</td>
+                                            <td> {{ $row->link}}</td>
                                             <td><span class="badge badge-{{ $row->status }}">{{ $row->status }}</span></td>
                                             <td>
                                                 <a href="{{route('events.admin.edit',['id'=>$row->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> {{__('Edit')}}</a>

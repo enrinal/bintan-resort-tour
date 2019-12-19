@@ -11,7 +11,7 @@
         public static function getSettingPages()
         {
             return [
-                [
+               /* [
                     'id'        => 'vendor',
                     'title'     => __("Vendor Settings"),
                     'position'  => 50,
@@ -32,7 +32,7 @@
 
                     ],
                     'filter_values_callback'=>[SettingClass::class,'filterValuesBeforeSaving']
-                ]
+                ] */
             ];
         }
 

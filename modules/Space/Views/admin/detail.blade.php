@@ -51,7 +51,7 @@
                         </div>
                        
                         @if(is_default_lang())
-                            <div class="panel">
+                           {{-- <div class="panel">
                                 <div class="panel-title"><strong>{{__("Availability")}}</strong></div>
                                 <div class="panel-body">
                                     <div class="form-group">
@@ -78,7 +78,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             @include('Space::admin.space.attributes')
                             <div class="panel">
                                 <div class="panel-title"><strong>{{__('Feature Image')}}</strong></div>

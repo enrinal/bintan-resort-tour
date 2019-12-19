@@ -94,6 +94,7 @@ class EventsController extends AdminController
             'row'  => $row,
             'translation'  => $translation,
             'categories' => EventsCategory::get()->toTree(),
+            'link' => $row->link,
             'tags' => $row->getTags(),
             'enable_multi_lang'=>true
         ];

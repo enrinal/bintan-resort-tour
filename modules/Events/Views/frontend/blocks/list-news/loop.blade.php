@@ -14,26 +14,12 @@
         </a>
     </div>
     <div class="caption">
-        <div class="item-date">
-            <ul>
-                @php $category = $row->getCategory; @endphp
-                @if(!empty($category))
-                    @php $t = $category->translateOrOrigin(app()->getLocale()); @endphp
-                    <li>
-                        <a href="{{$category->getDetailUrl(app()->getLocale())}}">
-                            {{$t->name ?? ''}}
-                        </a>
-                    </li>
-                @endif
-                <li class="dot"> {{ display_date($row->updated_at)}}  </li>
-            </ul>
-        </div>
         <h3 class="item-title"><a href="{{$row->getDetailUrl()}}"> {{$translation->title}} </a></h3>
         <div class="item-desc">
             {!! get_exceprt($translation->content,70,"...") !!}
         </div>
         <div class="item-more">
-            <a class="btn-readmore" href="{{$row->getDetailUrl()}}">{{ __('Read More')}}</a>
+            <a class="btn-readmore" href="{{url($row->link)}}">{{ __('Read More')}}</a>
         </div>
     </div>
 </div>
