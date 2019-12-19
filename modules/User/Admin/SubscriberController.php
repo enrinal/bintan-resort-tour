@@ -13,6 +13,7 @@ class SubscriberController extends AdminController
     public function __construct()
     {
         parent::__construct();
+        $this->setActiveMenu('admin/module/user');
     }
 
     public function index(Request $request)

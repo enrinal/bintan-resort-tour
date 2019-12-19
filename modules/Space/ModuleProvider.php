@@ -112,9 +112,9 @@ class ModuleProvider extends ModuleServiceProvider
     public static function getTemplateBlocks(){
         if(!Space::isEnable()) return [];
         return [
-            'form_search_space'=>"\\Modules\\Space\\Blocks\\FormSearchSpace",
-            'list_space'=>"\\Modules\\Space\\Blocks\\ListSpace",
-            'space_term_featured_box'=>"\\Modules\\Space\\Blocks\\SpaceTermFeaturedBox",
+            //'form_search_space'=>"\\Modules\\Space\\Blocks\\FormSearchSpace",
+            //'list_space'=>"\\Modules\\Space\\Blocks\\ListSpace",
+            //'space_term_featured_box'=>"\\Modules\\Space\\Blocks\\SpaceTermFeaturedBox",
         ];
     }
 }

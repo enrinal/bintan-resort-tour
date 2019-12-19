@@ -40,22 +40,22 @@ class ModuleProvider extends ModuleServiceProvider
                         'title' => __('All Users'),
                         'icon'  => 'fa fa-user',
                     ],
-                    'role'=>[
+                    /*'role'=>[
                         'url'        => 'admin/module/user/role',
                         'title'      => __('Role Manager'),
                         'permission' => 'role_view',
                         'icon'       => 'fa fa-lock',
-                    ],
+                    ], */
                     'subscriber'=>[
                         'url'        => 'admin/module/user/subscriber',
                         'title'      => __('Subscribers'),
                         'permission' => 'newsletter_manage',
                     ],
-                    'userUpgradeRequest'=>[
+                   /* 'userUpgradeRequest'=>[
                         'url'        => 'admin/module/user/userUpgradeRequest',
                         'title'      => __('Upgrade Request'),
                         'permission' => 'user_view',
-                    ],
+                    ],*/
                     'user_verification'=>[
                         'url'        => 'admin/module/user/verification',
                         'title'      => __('Verification Request :count',['count'=>$noti_verify ? sprintf('<span class="badge badge-warning">%d</span>',$noti_verify) : '']),

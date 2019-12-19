@@ -34,7 +34,7 @@ $menus = [
         'permission' => 'setting_update',
         'children'   => \Modules\Core\Models\Settings::getSettingPages()
     ],
-    'tools'=>[
+   /* 'tools'=>[
         "position"=>90,
         'url'      => 'admin/module/core/tools',
         'title'    => __("Tools"),
@@ -59,7 +59,7 @@ $menus = [
                 'permission' => 'system_log_view',
             ],
         ]
-    ],
+    ], */
     'booking'=>[
         "position"=>110,
         'url'        => 'admin/module/report/booking',

@@ -110,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel">
+                {{--   <div class="panel">
                         <div class="panel-title"><strong>{{ __('Vendor')}}</strong></div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -130,7 +130,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}} 
                     <div class="panel">
                         <div class="panel-title"><strong>{{ __('Avatar')}}</strong></div>
                         <div class="panel-body">

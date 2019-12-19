@@ -24,7 +24,7 @@ class ModuleProvider extends ModuleServiceProvider
     public static function getAdminSubmenu()
     {
         return [
-            [
+           /* [
                 'id'=>'updater',
                 'parent'=>'tools',
                 'title'=>__("Updater"),
@@ -39,7 +39,7 @@ class ModuleProvider extends ModuleServiceProvider
                 'url'=>'admin/module/core/plugins',
                 'icon'=>'icon ion-md-color-wand',
                 'permission'=>'plugin_manage'
-            ]
+            ] */
         ];
     }
 }

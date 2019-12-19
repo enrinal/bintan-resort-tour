@@ -23,7 +23,7 @@ class ModuleProvider extends ModuleServiceProvider
 
     public static function getAdminMenu()
     {
-        $count = VendorPayout::countInitial();
+       /* $count = VendorPayout::countInitial();
         return [
             'payout'=>[
                 "position"=>60,
@@ -32,7 +32,7 @@ class ModuleProvider extends ModuleServiceProvider
                 'icon'       => 'icon ion-md-card',
                 'permission' => 'user_create',
             ]
-        ];
+        ]; */
     }
 
 

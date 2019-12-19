@@ -52,13 +52,13 @@ class ModuleProvider extends ModuleServiceProvider
         ];
     }
 
-    public static function getBookableServices()
+ /*   public static function getBookableServices()
     {
         if(!Car::isEnable()) return [];
         return [
             'car'=>Car::class
         ];
-    }
+    } */
 
     public static function getMenuBuilderTypes()
     {
@@ -79,18 +79,18 @@ class ModuleProvider extends ModuleServiceProvider
         return [
             'car' => [
                 'url'   => route('car.vendor.index'),
-                'title'      => __("Manage Car"),
+                'title'      => __("Manage Merchandise"),
                 'icon'       => Car::getServiceIconFeatured(),
                 'position'   => 31,
                 'permission' => 'car_view',
                 'children' => [
                     [
                         'url'   => route('car.vendor.index'),
-                        'title'  => __("All Cars"),
+                        'title'  => __("All Merchandise"),
                     ],
                     [
                         'url'   => route('car.vendor.create'),
-                        'title'      => __("Add Car"),
+                        'title'      => __("Add Merchandise"),
                         'permission' => 'car_create',
                     ],
                     [
@@ -111,9 +111,9 @@ class ModuleProvider extends ModuleServiceProvider
     public static function getTemplateBlocks(){
         if(!Car::isEnable()) return [];
         return [
-            'form_search_car'=>"\\Modules\\Car\\Blocks\\FormSearchCar",
+            //'form_search_car'=>"\\Modules\\Car\\Blocks\\FormSearchCar",
             'list_car'=>"\\Modules\\Car\\Blocks\\ListCar",
-            'car_term_featured_box'=>"\\Modules\\Car\\Blocks\\CarTermFeaturedBox",
+            //'car_term_featured_box'=>"\\Modules\\Car\\Blocks\\CarTermFeaturedBox",
         ];
     }
 }

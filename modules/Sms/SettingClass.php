@@ -13,7 +13,7 @@
 		public static function getSettingPages()
 		{
 			return [
-				[
+			/*	[
 					'id'        => 'sms',
 					'title'     => __("Sms Settings"),
 					'position'  => 100,
@@ -51,7 +51,7 @@
 					'html_keys' => [
 
 					]
-				]
+				] */
 			];
 		}
 	}

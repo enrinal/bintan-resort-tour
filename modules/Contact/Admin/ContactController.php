@@ -17,8 +17,8 @@ class ContactController extends AdminController
 {
     public function __construct()
     {
-        $this->setActiveMenu('admin/module/report');
         parent::__construct();
+        $this->setActiveMenu('admin/module/contact');
     }
 
     public function index(Request $request)
@@ -47,7 +47,7 @@ class ContactController extends AdminController
                     'class' => 'active'
                 ],
             ]
-        ];
+        ]; 
         return view('Contact::admin.index', $data);
     }
 
