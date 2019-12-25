@@ -821,7 +821,7 @@ function get_payment_gateways(){
         }
     }
     //Plugin
-    $plugin_modules = \Plugins\ServiceProvider::getModules();
+   /* $plugin_modules = \Plugins\ServiceProvider::getModules();
     if(!empty($plugin_modules)){
         foreach($plugin_modules as $module){
             $moduleClass = "\\Plugins\\".ucfirst($module)."\\ModuleProvider";
@@ -833,7 +833,7 @@ function get_payment_gateways(){
                 }
             }
         }
-    }
+    } */
     return $gateways;
 }
 

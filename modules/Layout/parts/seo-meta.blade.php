@@ -5,10 +5,10 @@
     @php
         $page_title = $seo_meta['seo_title'] ?? $seo_meta['service_title'] ?? $page_title ?? "";
         if(!empty($page_title) and empty($seo_meta['is_homepage'])){
-            $page_title .= " - ".setting_item_with_lang('site_title' ,false,'Booking Core');
+            $page_title .= " - ".setting_item_with_lang('site_title' ,false,'Bintan Resorts Tour');
         }
         if(empty($page_title)){
-            $page_title = setting_item_with_lang('site_title' ,false,'Booking Core');
+            $page_title = setting_item_with_lang('site_title' ,false,'Bintan Resorts Tour');
         }
     @endphp
     <title>{{ $page_title }}</title>

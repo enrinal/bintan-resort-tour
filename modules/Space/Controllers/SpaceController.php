@@ -30,7 +30,7 @@ class SpaceController extends Controller
 
     public function index(Request $request)
     {
-
+        return redirect('/');
         $is_ajax = $request->query('_ajax');
         $model_space = $this->spaceClass::select("bravo_spaces.*");
         $model_space->where("bravo_spaces.status", "publish");

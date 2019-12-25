@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Booking Core'),
+    'name' => env('APP_NAME', 'Bintan Resorts Tour'),
 
     /*
     |--------------------------------------------------------------------------

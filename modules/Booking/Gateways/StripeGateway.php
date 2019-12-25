@@ -154,7 +154,7 @@ class StripeGateway extends BaseGateway
     {
         $data['currency'] = setting_item('currency_main');
         $data['token'] = $request->input("token");
-        $data['description'] = __("Booking Core");
+        $data['description'] = __("Bintan Resorts Tour");
         return $data;
     }
 
