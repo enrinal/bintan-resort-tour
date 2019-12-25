@@ -52,7 +52,7 @@ class MidtransGateway extends BaseGateway
                 'type'    => 'select',
                 'id'      => 'convert_to',
                 'label'   => __('Convert To'),
-                'desc'    => __('In case of main currency does not support by PayPal. You must select currency and input exchange_rate to currency that PayPal support'),
+                'desc'    => __('In case of main currency does not support by Midrans. You must select currency and input exchange_rate to currency that Midtrans support'),
                 'options' => $this->supportedCurrency()
             ],
             [
@@ -60,45 +60,31 @@ class MidtransGateway extends BaseGateway
                 'input_type' => 'number',
                 'id'         => 'exchange_rate',
                 'label'      => __('Exchange Rate'),
-                'desc'       => __('Example: Main currency is VND (which does not support by PayPal), you may want to convert it to USD when customer checkout, so the exchange rate must be 23400 (1 USD ~ 23400 VND)'),
+                'desc'       => __('Example: Main currency is VND (which does not support by Midtrans), you may want to convert it to USD when customer checkout, so the exchange rate must be 23400 (1 USD ~ 23400 VND)'),
             ],
             [
                 'type'      => 'input',
                 'id'        => 'test_account',
-                'label'     => __('Sandbox API Username'),
-                'condition' => 'g_paypal_test:is(1)'
+                'label'     => __('Sandbox Client Key'),
+                'condition' => 'g_midtrans_test:is(1)'
             ],
             [
                 'type'      => 'input',
                 'id'        => 'test_client_id',
-                'label'     => __('Sandbox API Password'),
-                'condition' => 'g_paypal_test:is(1)'
-            ],
-            [
-                'type'      => 'input',
-                'id'        => 'test_client_secret',
-                'label'     => __('Sandbox Signature'),
-                'std'       => '',
-                'condition' => 'g_paypal_test:is(1)'
+                'label'     => __('Sandbox Server Key'),
+                'condition' => 'g_midtrans_test:is(1)'
             ],
             [
                 'type'      => 'input',
                 'id'        => 'account',
-                'label'     => __('API Username'),
-                'condition' => 'g_paypal_test:is()'
+                'label'     => __('Sandbox Client Key'),
+                'condition' => 'g_midtrans_test:is()'
             ],
             [
                 'type'      => 'input',
                 'id'        => 'client_id',
-                'label'     => __('API Password'),
-                'condition' => 'g_paypal_test:is()'
-            ],
-            [
-                'type'      => 'input',
-                'id'        => 'client_secret',
-                'label'     => __('Signature'),
-                'std'       => '',
-                'condition' => 'g_paypal_test:is()'
+                'label'     => __('Sandbox Server Key'),
+                'condition' => 'g_midtrans_test:is()'
             ],
         ];
     }
@@ -238,7 +224,7 @@ class MidtransGateway extends BaseGateway
         $data['cancelUrl'] = $this->getCancelUrl() . '?c=' . $booking->code;
         if (!array_key_exists($main_currency, $supported)) {
             if (!$convert_to) {
-                throw new Exception(__("PayPal does not support currency: :name", ['name' => $main_currency]));
+                throw new Exception(__("Midtrans does not support currency: :name", ['name' => $main_currency]));
             }
             if (!$exchange_rate = $this->getOption('exchange_rate')) {
                 throw new Exception(__("Exchange rate to :name must be specific. Please contact site owner", ['name' => $convert_to]));
@@ -282,6 +268,7 @@ class MidtransGateway extends BaseGateway
             "chf" => "Swiss franc",
             "thb" => "Thai baht",
             "usd" => "United States dollar",
+            "idr" => "Indonesia Rupiah"
         ];
     }
 }
