@@ -10,6 +10,10 @@ use Modules\Booking\Models\Payment;
 use Omnipay\Omnipay;
 use Omnipay\PayPal\ExpressGateway;
 use Illuminate\Support\Facades\Log;
+use Midtrans\Config;
+use Midtrans\Snap;
+use Redirect;
+
 
 class MidtransGateway extends BaseGateway
 {
@@ -18,7 +22,7 @@ class MidtransGateway extends BaseGateway
      * @var $gateway ExpressGateway
      */
     protected $gateway;
-
+    
     public function getOptionsConfigs()
     {
         return [
@@ -103,6 +107,7 @@ class MidtransGateway extends BaseGateway
             throw new Exception(__("Booking total is zero. Can not process payment gateway!"));
         }
         $this->getGateway();
+        Config::$serverKey = "SB-Mid-server-gSzduchwMwroc9vV9q6f37PH";
         $payment = new Payment();
         $payment->booking_id = $booking->id;
         $payment->payment_gateway = $this->id;
@@ -111,19 +116,24 @@ class MidtransGateway extends BaseGateway
             'amount'        => (float)$booking->total,
             'transactionId' => $booking->code . '.' . time()
         ], $booking, $payment);
-        $response = $this->gateway->purchase($data)->send();
-        if ($response->isRedirect()) {
-
+        $transaction = array(
+            'transaction_details' => array(
+                'order_id' => $data['transactionId'],
+                'gross_amount' => $data['amount'] // no decimal allowed
+                )
+            );
+        $response = Snap::createTransaction($transaction)->redirect_url;
+        if ($response) {
             $payment->save();
             $booking->status = $booking::UNPAID;
             $booking->payment_id = $payment->id;
-            $booking->save();
-            // redirect to offsite payment gateway
+            $booking->save();            
             response()->json([
-                'url' => $response->getRedirectUrl()
+                'url' => $response
             ])->send();
         } else {
-            throw new Exception('Midtrans Gateway: ' . $response->getMessage());
+            //Redirect::to($response);
+            throw new Exception('Midtrans Gateway: ' . print_r($data));
         }
     }
 
@@ -222,7 +232,7 @@ class MidtransGateway extends BaseGateway
         $data['currency'] = $main_currency;
         $data['returnUrl'] = $this->getReturnUrl() . '?c=' . $booking->code;
         $data['cancelUrl'] = $this->getCancelUrl() . '?c=' . $booking->code;
-        if (!array_key_exists($main_currency, $supported)) {
+        if (array_key_exists($main_currency, $supported)) {
             if (!$convert_to) {
                 throw new Exception(__("Midtrans does not support currency: :name", ['name' => $main_currency]));
             }
@@ -234,7 +244,7 @@ class MidtransGateway extends BaseGateway
                 $payment->converted_amount = $booking->total / $exchange_rate;
                 $payment->exchange_rate = $exchange_rate;
             }
-            $data['amount'] = number_format( $booking->total / $exchange_rate , 2 );
+            $data['amount'] =  $booking->total * $exchange_rate;
             $data['currency'] = $convert_to;
         }
         return $data;
