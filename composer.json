@@ -18,6 +18,7 @@
         "league/omnipay": "^3",
         "maatwebsite/excel": "^3.1",
         "mews/purifier": "^2.1",
+        "midtrans/midtrans-php": "^2.0",
         "omnipay/paypal": "^3.0",
         "omnipay/stripe": "^3.0",
         "propaganistas/laravel-phone": "^4.2",
