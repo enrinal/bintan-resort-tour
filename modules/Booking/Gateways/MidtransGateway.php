@@ -115,7 +115,7 @@ class MidtransGateway extends BaseGateway
         $payment->status = 'draft';
         $data = $this->handlePurchaseData([
             'amount'        => (float)$booking->total,
-            'transactionId' => $booking->code . '.' . time()
+            'transactionId' => $booking->code
         ], $booking, $payment);
         $transaction = array(
             'transaction_details' => array(

@@ -22,5 +22,6 @@ class VerifyCsrfToken extends Middleware
         //
         'notification/handler',
         'booking/notification/handler',
+        'public/booking/notification/handler',
     ];
 }

@@ -1,6 +1,7 @@
 <?php
 namespace Modules\Booking\Controllers;
 
+
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Mockery\Exception;
 //use Modules\Booking\Events\VendorLogPayment;
@@ -10,7 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Booking\Models\Booking;
 use App\Helpers\ReCaptchaEngine;
-use Midtrans\Notification;
+use Midtrans;
+use Midtrans\Config;
+
 
 class BookingController extends \App\Http\Controllers\Controller
 {
@@ -289,36 +292,92 @@ class BookingController extends \App\Http\Controllers\Controller
         return view('Booking::frontend/detail', $data);
     }
 
+    public function detailSuccess(Request $request)
+    {
+
+        $booking = Booking::where('code', $request->input('order_id'))->first();
+        if (empty($booking)) {
+            abort(404);
+        }
+
+        if ($booking->status == 'draft') {
+            return redirect($booking->getCheckoutUrl());
+        }
+        if ($booking->customer_id != Auth::id()) {
+            abort(404);
+        }
+        $data = [
+            'page_title' => __('Booking Details'),
+            'booking'    => $booking,
+            'service'    => $booking->service,
+        ];
+        if ($booking->gateway) {
+            $data['gateway'] = get_payment_gateway_obj($booking->gateway);
+        }
+        return view('Booking::frontend/detail', $data);
+    }
     public function notificationHandler(Request $request)
     {
-        $notif = new \Midtrans\Notification();
+        Config::$serverKey = 'SB-Mid-server-gSzduchwMwroc9vV9q6f37PH';
+        Config::$clientKey = "SB-Mid-client-pErWPMDeWLIk8hdl";
+        Config::$isProduction = false;
+        $notif = new Midtrans\Notification();
+        $str = 'SB-Mid-server-gSzduchwMwroc9vV9q6f37PH';
+        base64_encode($str);
+        
         $transaction = $notif->transaction_status;
         $fraud = $notif->fraud_status;
         $orderId = $notif->order_id;
         error_log("Order ID $notif->order_id: "."transaction status = $transaction, fraud staus = $fraud");
         $booking = Booking::where('code',  $orderId)->first();
         if ($transaction == 'capture') {
-            if ($fraud == 'challenge') {
-            // TODO Set payment status in merchant's database to 'challenge'
+ 
+            // For credit card transaction, we need to check whether transaction is challenge by FDS or not
+            if ($type == 'credit_card') {
+ 
+              if($fraud == 'challenge') {
+                // TODO set payment status in merchant's database to 'Challenge by FDS'
+                // TODO merchant should decide whether this transaction is authorized or not in MAP
+                // $donation->addUpdate("Transaction order_id: " . $orderId ." is challenged by FDS");
+                //$donation->setPending();
+              } else {
+                // TODO set payment status in merchant's database to 'Success'
+                // $donation->addUpdate("Transaction order_id: " . $orderId ." successfully captured using " . $type);
+                $booking->markAsPaid();
+              }
+ 
             }
-            else if ($fraud == 'accept') {
-            // TODO Set payment status in merchant's database to 'success'
+ 
+          } elseif ($transaction == 'settlement') {
+ 
+            // TODO set payment status in merchant's database to 'Settlement'
+            // $donation->addUpdate("Transaction order_id: " . $orderId ." successfully transfered using " . $type);
             $booking->markAsPaid();
-            }
-        }
-        else if ($transaction == 'cancel') {
-            if ($fraud == 'challenge') {
-            // TODO Set payment status in merchant's database to 'failure'
+ 
+          } elseif($transaction == 'pending'){
+ 
+            // TODO set payment status in merchant's database to 'Pending'
+            // $donation->addUpdate("Waiting customer to finish transaction order_id: " . $orderId . " using " . $type);
+            //$donation->setPending();
+ 
+          } elseif ($transaction == 'deny') {
+ 
+            // TODO set payment status in merchant's database to 'Failed'
+            // $donation->addUpdate("Payment using " . $type . " for transaction order_id: " . $orderId . " is Failed.");
             $booking->markAsmarkAsPaymentFailedPaid();
-            }
-            else if ($fraud == 'accept') {
-            // TODO Set payment status in merchant's database to 'failure'
-            $booking->markAsPaymentFailed();
-            }
-        }
-        else if ($transaction == 'deny') {
-            // TODO Set payment status in merchant's database to 'failure'
-            $booking->markAsPaymentFailed();
-        }
+ 
+          } elseif ($transaction == 'expire') {
+ 
+            // TODO set payment status in merchant's database to 'expire'
+            // $donation->addUpdate("Payment using " . $type . " for transaction order_id: " . $orderId . " is expired.");
+            $booking->markAsmarkAsPaymentFailedPaid();
+ 
+          } elseif ($transaction == 'cancel') {
+ 
+            // TODO set payment status in merchant's database to 'Failed'
+            // $donation->addUpdate("Payment using " . $type . " for transaction order_id: " . $orderId . " is canceled.");
+            $booking->markAsmarkAsPaymentFailedPaid();
+ 
+          }
     }
 }
