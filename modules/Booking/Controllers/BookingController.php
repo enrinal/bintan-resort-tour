@@ -10,12 +10,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Booking\Models\Booking;
 use App\Helpers\ReCaptchaEngine;
+use Midtrans\Notification;
 
 class BookingController extends \App\Http\Controllers\Controller
 {
     use AuthorizesRequests;
     protected $booking;
-
+    
     public function __construct()
     {
         $this->booking = Booking::class;
@@ -286,5 +287,38 @@ class BookingController extends \App\Http\Controllers\Controller
             $data['gateway'] = get_payment_gateway_obj($booking->gateway);
         }
         return view('Booking::frontend/detail', $data);
+    }
+
+    public function notificationHandler(Request $request)
+    {
+        $notif = new \Midtrans\Notification();
+        $transaction = $notif->transaction_status;
+        $fraud = $notif->fraud_status;
+        $orderId = $notif->order_id;
+        error_log("Order ID $notif->order_id: "."transaction status = $transaction, fraud staus = $fraud");
+        $booking = Booking::where('code',  $orderId)->first();
+        if ($transaction == 'capture') {
+            if ($fraud == 'challenge') {
+            // TODO Set payment status in merchant's database to 'challenge'
+            }
+            else if ($fraud == 'accept') {
+            // TODO Set payment status in merchant's database to 'success'
+            $booking->markAsPaid();
+            }
+        }
+        else if ($transaction == 'cancel') {
+            if ($fraud == 'challenge') {
+            // TODO Set payment status in merchant's database to 'failure'
+            $booking->markAsmarkAsPaymentFailedPaid();
+            }
+            else if ($fraud == 'accept') {
+            // TODO Set payment status in merchant's database to 'failure'
+            $booking->markAsPaymentFailed();
+            }
+        }
+        else if ($transaction == 'deny') {
+            // TODO Set payment status in merchant's database to 'failure'
+            $booking->markAsPaymentFailed();
+        }
     }
 }

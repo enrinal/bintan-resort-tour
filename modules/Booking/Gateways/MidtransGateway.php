@@ -107,7 +107,8 @@ class MidtransGateway extends BaseGateway
             throw new Exception(__("Booking total is zero. Can not process payment gateway!"));
         }
         $this->getGateway();
-        Config::$serverKey = "SB-Mid-server-gSzduchwMwroc9vV9q6f37PH";
+        // Config::$serverKey = "SB-Mid-server-gSzduchwMwroc9vV9q6f37PH";
+        Config::$serverKey = $this->getOption('client_id');
         $payment = new Payment();
         $payment->booking_id = $booking->id;
         $payment->payment_gateway = $this->id;

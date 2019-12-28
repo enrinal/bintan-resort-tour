@@ -9,4 +9,5 @@ Route::group(['prefix'=>config('booking.booking_route_prefix')],function(){
     Route::get('/{code}','BookingController@detail')->middleware('auth');
     Route::get('/{code}/checkout','BookingController@checkout')->middleware('auth');
     Route::get('/{code}/check-status','BookingController@checkStatusCheckout')->middleware('auth');
+    Route::post('/notification/handler', 'BookingController@notificationHandler');
 });
