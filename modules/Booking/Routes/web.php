@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 // Booking
 Route::group(['prefix'=>config('booking.booking_route_prefix')],function(){
-    Route::get('/success','BookingController@detailSuccess')->middleware('auth');
+    Route::get('/success','BookingController@detailSuccess');
     Route::post('/addToCart','BookingController@addToCart')->middleware('auth');
     Route::post('/doCheckout','BookingController@doCheckout')->middleware('auth');
     Route::get('/confirm/{gateway}','BookingController@confirmPayment');
