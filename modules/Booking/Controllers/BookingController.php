@@ -10,6 +10,7 @@ use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Booking\Models\Booking;
+use Modules\Core\Models\Settings;
 use App\Helpers\ReCaptchaEngine;
 use Midtrans;
 use Midtrans\Config;
@@ -318,13 +319,17 @@ class BookingController extends \App\Http\Controllers\Controller
     }
     public function notificationHandler(Request $request)
     {
-        Config::$serverKey = 'SB-Mid-server-gSzduchwMwroc9vV9q6f37PH';
-        Config::$clientKey = "SB-Mid-client-pErWPMDeWLIk8hdl";
-        Config::$isProduction = false;
+        $res = Settings::getSettings($group = 'payment');
+        if ($res['g_midtrans_enable'] == 1) {
+            Config::$serverKey = $res['g_midtrans_test_client_id'];
+            Config::$clientKey = $res['g_midtrans_test_account'];
+            Config::$isProduction = false;
+        }else{
+            Config::$serverKey = $res['g_midtrans_client_id'];
+            Config::$clientKey = $res['g_midtrans_account'];
+            Config::$isProduction = true;
+        }
         $notif = new Midtrans\Notification();
-        $str = 'SB-Mid-server-gSzduchwMwroc9vV9q6f37PH';
-        base64_encode($str);
-        
         $transaction = $notif->transaction_status;
         $fraud = $notif->fraud_status;
         $orderId = $notif->order_id;
